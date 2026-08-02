@@ -124,10 +124,10 @@ const PROJECTS = [
   {
     id: "wheel-light-mounting",
     title: "Wheel Light Mounting System",
-    year: "2024",
+    year: "2024-2026",
     category: "Mechanical",
-    status: "Complete",
-    blurb: "A modular, patent-pending mounting architecture for off-road lighting, engineered for vibration resistance, packaging efficiency, and serviceability — from CAD to CNC-fabricated prototype.",
+    status: "Patent Granted",
+    blurb: "A modular mounting architecture for off-road wheel lighting, engineered for vibration resistance, packaging efficiency, and serviceability — taken from CAD through CNC-fabricated prototype to an issued U.S. patent on which I am a named co-inventor.",
     highlights: [
       "Modular mounting design engineered for vibration resistance and serviceability.",
       "Manufacturing-ready drawings and BOM developed in SolidWorks with full GD&T.",
@@ -148,11 +148,10 @@ const PROJECTS = [
       { src: "", caption: "Plasma-cut blanks before secondary operations" },
     ],
 
-    problem: "Off-road lighting mounts live in a punishing vibration environment, and the common failure isn't the light — it's the bracket loosening, fatiguing or forcing a full teardown to service. <FILL IN: what specifically prompted this project — a mount that failed on you, a gap you saw in what's sold, a customer requirement.>\n\nThe design had to hold up under vibration, package efficiently around <FILL IN: the wheel/vehicle geometry it mounts to>, and stay serviceable without removing surrounding hardware.",
+    problem: "Wheel ring lights are conventionally mounted to the brake dust shield — a thin stamped panel whose only job is deflecting debris. It carries no design load, has no structural stiffness, and was never intended to support a ring assembly hanging off it in an unsprung, rotating, continuously shock-loaded position. Mounting to it is a known bad practice in the industry, and it's the default anyway because it's the only flat surface behind the wheel that's easy to reach.\n\nThe alternative isn't obvious. Anything stiff enough to mount to — knuckle, hub, caliper bracket — is already crowded with brake and suspension hardware, varies by vehicle, and can't be drilled or modified without creating a liability. Whatever replaces the dust shield mount has to clear the rotor and caliper through full articulation, use only fasteners the vehicle already has, and still come apart for brake service without removing the light ring from the vehicle.\n\nDesign constraints: <FILL IN — target vehicle platforms/model years, wheel diameter and backspacing range, ring light fixtures supported>",
 
-    approach: "Designed a modular bracket architecture in SolidWorks so that <FILL IN: what the modularity actually buys — fits multiple light sizes, multiple vehicles, or lets one damaged element be replaced alone>. Vibration resistance came from <FILL IN: the specific measures — fastener preload spec, thread locker, isolation grommets, gusseting, stiffening geometry>\n\nProduced a manufacturing-ready package: fully dimensioned drawings with GD&T to <FILL IN: standard used, e.g. ASME Y14.5-2018> plus a complete BOM. Fabricated the prototype by CNC plasma cutting from <FILL IN: material and thickness>, followed by <FILL IN: secondary operations — bending, drilling, tapping, deburring, finishing>",
-
-    result: "Validated through fastener torque checks and road testing over <FILL IN: distance and terrain type, and how long the test ran>. <FILL IN: what the checks actually showed — torque retention after N miles, no visible fatigue, any failure you found and fixed.>\n\nThe design is patent-pending as of <FILL IN: filing date, and provisional vs non-provisional>",
+    approach: "The system attaches to structural vehicle components instead of the dust shield — specifically the steering knuckle at the front and the axle hub assembly at the rear. Bracket geometry is shaped to wrap the existing contours of those components, and mounting holes are positioned to land on bolts the vehicle already has: axle flange and caliper bolts at the knuckle, hub flange bolts at the rear axle. Nothing is drilled, welded, or modified on the vehicle.\n\nThree bracket assemblies cover the vehicle: a driver-side knuckle assembly, a passenger-side knuckle assembly (mirrored, not identical, because the knuckles aren't), and a rear axle assembly that fits either side. Each carries a ring-shaped mount that accepts ring lights on both its inner and outer circumference via strap fasteners.\n\nServiceability is built into the bracket topology. Rather than one welded structure, each assembly is several bracket members removably coupled to one another. That lets the ring mount come off for brake work without disturbing the rest of the assembly — the constraint that usually kills aftermarket lighting installs.\n\nMy contribution covered <FILL IN — which of the three assemblies you owned, which analyses, which drawings>, including SolidWorks drawings dimensioned with GD&T per ASME Y14.5 for CNC plasma and downstream secondary operations, plus the released BOM.",
+    result: "U.S. Patent No. 12,673,603 B2 issued to Shoreline Offroad, LLC, naming three co-inventors. Eleven claims across three independent claims cover the ring-mount-plus-bracket-assembly architecture, with the mounting location expressly claimed as something other than a brake dust shield, and the steering knuckle and axle hub named specifically.\n\nPrototypes were fabricated via CNC plasma cutting and secondary operations, then validated through fitment checks, torque checks, and road testing.\n\n<FILL IN — hard numbers: vehicle platforms fitted, units built, test miles, retorque results, whether units are in service. Two real numbers here outweigh a paragraph of description.>\n\nRights were assigned prior to issuance; inventorship remains on the patent record.",
 
     lessons: [
       "<FILL IN: what fabrication taught you that CAD didn't — plasma kerf, heat distortion, a tolerance you couldn't actually hold, a feature that was awkward to fixture.>",
@@ -161,19 +160,21 @@ const PROJECTS = [
     ],
 
     specs: [
-      { k: "Material",     v: "<FILL IN: e.g. 3/16 in A36 steel>" },
-      { k: "Process",      v: "CNC plasma cutting + secondary ops" },
-      { k: "Fasteners",    v: "<FILL IN: size, grade, torque spec>" },
-      { k: "Finish",       v: "<FILL IN: powder coat, zinc, raw>" },
-      { k: "Mass",         v: "<FILL IN>" },
-      { k: "Road tested",  v: "<FILL IN: miles / hours>" },
-      { k: "IP status",    v: "Patent pending" },
+      { k: "Patent",       v: "US 12,673,603 B2" },
+      { k: "Issue Date",      v: "2026-07-07" },
+      { k: "Application no.",    v: "19/314,475." },
+      { k: "Filed",       v: "2024" },
+      { k: "Inventors",         v: "Joshua West,\nDrake Ferronyalka,\nAndre Ferronyalka" },
+      { k: "Assignee",  v: "Shoreline Offroad Co." },
+      { k: "Application",    v: "2018-2025 Jeep Wrangler (4dr)" },
+      { k: "Material",    v: "Mild Steel" },
+      { k: "Fabrication",    v: "CNC PLasma + Secondary Operations" },
+      { k: "Status",    v: "Patent Granted" },
     ],
 
     files: [
-      { label: "Drawing set (PDF)",   url: "" },
-      { label: "BOM",                 url: "" },
-      { label: "CAD — STEP package",  url: "" },
+      { label: "Patent - US 12,673,603 B2",   url: "https://patentsgazette.uspto.gov/week27/OG/html/1548-1/US12673603-20260707.html" },
+
     ],
   },
 ];
