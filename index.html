@@ -10,7 +10,7 @@
      SOCIAL PREVIEW (what shows when you share the link)
      ============================================================ -->
 <meta property="og:title" content="Drake Ferronyalka — Engineering Portfolio">
-<meta property="og:description" content="Mechanical, aerospace and robotics engineering projects.">
+<meta property="og:description" content="Mechanical, Aerospace and Robotics Engineering Projects.">
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,11 +32,11 @@ const SITE = {
   name:      "Drake Ferronyalka",
   role:      "Mechanical & Robotics Engineering Student",
   tagline:   "I design, build and test physical systems — from CAD and machined parts to embedded control. Currently studying engineering and looking for internship opportunities.",
-  location:  "Your City, Country",
+  location:  "Orlando, FL, United States",
   email:     "dferronyalka@gmail.com",
   // Leave any of these as "" to hide the button.
-  github:    "https://github.com/yourusername",
-  linkedin:  "https://linkedin.com/in/yourusername",
+  github:    "https://github.com/DFerronyalka",
+  linkedin:  "https://www.linkedin.com/in/drakeferronyalka/",
   resumeUrl: "resume.pdf",   // put a file called resume.pdf next to index.html
   // Short "about me" — write 2 or 3 sentences, in first person.
   about: [
@@ -56,21 +56,19 @@ const SITE = {
 
 const PROJECTS = [
   {
-    title: "Autonomous Line-Following Robot",
-    year: "2026",
-    category: "Robotics",
+    title: "Wheel Light Mounting System",
+    year: "2024",
+    category: "Mechanical",
     status: "Complete",
-    blurb: "A differential-drive robot that follows a taped course using an IR sensor array and a tuned PID controller. Chassis designed in Fusion 360 and 3D printed.",
+    blurb: "Modular mounting architecture for off-raod lighting with emphasis on vibration resistance, packaging, and serviceability.",
     // 2–4 short bullet points. These are what recruiters actually read.
     highlights: [
-      "Cut lap time 34% by retuning the PID loop and moving the sensor bar 40 mm forward",
-      "Custom PCB replaced a breadboard rat's nest — halved the wiring faults",
-      "Full build documented with CAD files and firmware on GitHub",
+      "- 10 piece bracketry system per corner for a total of a 40 Piece system per vehicle.",
     ],
-    tags: ["Fusion 360", "C++", "Arduino", "PID Control", "3D Printing"],
+    tags: ["SolidWorks"],
     image: "",
     links: {
-      github: "https://github.com/yourusername/line-robot",
+      github: "",
       writeup: "",
       demo: "",
     },
@@ -116,11 +114,11 @@ const PROJECTS = [
    ---------------------------------------------------------------- */
 
 const SKILLS = [
-  { group: "CAD & Design",   items: ["SolidWorks", "Fusion 360", "Onshape", "GD&T", "Technical Drawing"] },
-  { group: "Analysis",       items: ["ANSYS", "FEA", "MATLAB", "Statics & Dynamics", "Thermofluids"] },
-  { group: "Electronics",    items: ["KiCad", "Oscilloscope", "Soldering", "Arduino", "STM32"] },
-  { group: "Software",       items: ["Python", "C / C++", "Git", "NumPy", "Linux"] },
-  { group: "Manufacturing",  items: ["3D Printing (FDM)", "Lathe & Mill", "Laser Cutting", "Composites"] },
+  { group: "CAD & Design",   items: ["SolidWorks", "Siemens NX", "GD&T", "Technical Drawing"] },
+  { group: "Analysis",       items: ["ANSYS","Statics & Dynamics"] },
+  { group: "Electronics",    items: ["Oscilloscope", "Soldering"] },
+  { group: "Software",       items: ["Python", "C"] },
+  { group: "Manufacturing",  items: ["3D Printing (FDM)", "Lathe & Mill", "Plasma Cutting"] },
 ];
 
 /* ----------------------------------------------------------------
@@ -130,15 +128,15 @@ const SKILLS = [
 const TIMELINE = [
   {
     period: "2025 — Present",
-    title: "BEng Mechanical Engineering",
-    org: "Your University",
-    detail: "Relevant coursework: Statics, Materials Science, Engineering Design, Programming for Engineers.",
+    title: "BSME - Mechanical Engineering",
+    org: "University of Central Florida",
+    detail: "Relevant coursework: Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C, ",
   },
   {
-    period: "Summer 2025",
-    title: "Robotics Team — Mechanical Sub-team",
-    org: "University Robotics Society",
-    detail: "Designed and manufactured the drivetrain mounts for the competition robot.",
+    period: "May 2026 - Present",
+    title: "Machinist Apprectice",
+    org: "University of Central Florida - Office of Research",
+    detail: "Support UCF Senior Design teams and faculty-led research by translating design intent into manufacturable components, fixtures, and tooling using SolidWorks, GD&T, and first-principles problem-solving, while advising project teams on design for manufacturability to reduce rework and improve producibility with available shop equipment.",
   },
 ];
 
