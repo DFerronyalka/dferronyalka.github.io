@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Drake Ferronyalka — Engineering Portfolio</title>
-<meta name="description" content="Mechanical, Aerospace and Robotics Engineering Portfolio of Drake Ferronyalka.">
+<meta name="description" content="Mechanical, aerospace and robotics engineering portfolio of Drake Ferronyalka.">
 
 <!-- ============================================================
      SOCIAL PREVIEW (what shows when you share the link)
      ============================================================ -->
 <meta property="og:title" content="Drake Ferronyalka — Engineering Portfolio">
-<meta property="og:description" content="Mechanical, Aerospace and Robotics Engineering Projects.">
+<meta property="og:description" content="Mechanical, aerospace and robotics engineering projects.">
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,11 +32,11 @@ const SITE = {
   name:      "Drake Ferronyalka",
   role:      "Mechanical & Robotics Engineering Student",
   tagline:   "I design, build and test physical systems — from CAD and machined parts to embedded control. Currently studying engineering and looking for internship opportunities.",
-  location:  "Orlando, FL, United States",
+  location:  "Your City, Country",
   email:     "dferronyalka@gmail.com",
   // Leave any of these as "" to hide the button.
-  github:    "https://github.com/DFerronyalka",
-  linkedin:  "https://www.linkedin.com/in/drakeferronyalka/",
+  github:    "https://github.com/yourusername",
+  linkedin:  "https://linkedin.com/in/yourusername",
   resumeUrl: "resume.pdf",   // put a file called resume.pdf next to index.html
   // Short "about me" — write 2 or 3 sentences, in first person.
   about: [
@@ -44,6 +44,25 @@ const SITE = {
     "Most of what's on this page started as a course project or something I wanted to exist. I build, measure, find out what I got wrong, and iterate.",
   ],
 };
+
+/* ----------------------------------------------------------------
+   "AT A GLANCE" — the small card on the right of the About section.
+
+   Add, remove or reorder rows freely. Keep it to 4–6 rows or it
+   stops being "at a glance".
+
+   Emails and links (anything starting with http) become clickable
+   automatically. Write "auto" as the value to have the site count
+   your projects for you.
+   ---------------------------------------------------------------- */
+
+const GLANCE = [
+  { label: "Focus",     value: "Mechanical design & robotics" },
+  { label: "Based in",  value: "Your City, Country" },
+  { label: "Year",      value: "1st year BEng" },
+  { label: "Projects",  value: "auto" },
+  { label: "Email",     value: "dferronyalka@gmail.com" },
+];
 
 /* ----------------------------------------------------------------
    PROJECTS — newest first. Copy one whole { ... }, block to add more.
@@ -56,21 +75,57 @@ const SITE = {
 
 const PROJECTS = [
   {
-    title: "Wheel Light Mounting System",
-    year: "2024",
-    category: "Mechanical",
+    title: "Autonomous Line-Following Robot",
+    year: "2026",
+    category: "Robotics",
     status: "Complete",
-    blurb: "Modular mounting architecture for off-raod lighting with emphasis on vibration resistance, packaging, and serviceability.",
+    blurb: "A differential-drive robot that follows a taped course using an IR sensor array and a tuned PID controller. Chassis designed in Fusion 360 and 3D printed.",
     // 2–4 short bullet points. These are what recruiters actually read.
     highlights: [
-      "- 10 piece bracketry system per corner for a total of a 40 Piece system per vehicle.",
+      "Cut lap time 34% by retuning the PID loop and moving the sensor bar 40 mm forward",
+      "Custom PCB replaced a breadboard rat's nest — halved the wiring faults",
+      "Full build documented with CAD files and firmware on GitHub",
     ],
-    tags: ["SolidWorks"],
+    tags: ["Fusion 360", "C++", "Arduino", "PID Control", "3D Printing"],
+    image: "",
+    links: {
+      github: "https://github.com/yourusername/line-robot",
+      writeup: "",
+      demo: "",
+    },
+  },
+  {
+    title: "Composite Wing Section — Load Testing",
+    year: "2025",
+    category: "Mechanical",
+    status: "Complete",
+    blurb: "Designed, laid up and destructively tested a carbon-fibre wing rib section, comparing measured failure load against an FEA prediction.",
+    highlights: [
+      "FEA predicted failure at 2.1 kN; the physical part failed at 1.87 kN (11% error)",
+      "Traced the gap to resin voids found in post-failure sectioning",
+      "Wrote a 12-page technical report on the methodology and error sources",
+    ],
+    tags: ["SolidWorks", "ANSYS", "FEA", "Composites", "Materials Testing"],
+    image: "",
+    links: {
+      writeup: "",
+    },
+  },
+  {
+    title: "Bench Power Supply (0–30 V, 3 A)",
+    year: "2025",
+    category: "Electronics",
+    status: "In progress",
+    blurb: "A linear bench supply built from scratch — regulation circuit, current limiting, and a microcontroller-driven readout. Learning analog design the hard way.",
+    highlights: [
+      "Designed the schematic and 2-layer PCB in KiCad",
+      "Ripple measured under 5 mV at full load",
+      "Next: replace the panel meter with an OLED and rotary encoder",
+    ],
+    tags: ["KiCad", "Analog Design", "PCB Layout", "Soldering"],
     image: "",
     links: {
       github: "",
-      writeup: "",
-      demo: "",
     },
   },
 ];
@@ -80,11 +135,11 @@ const PROJECTS = [
    ---------------------------------------------------------------- */
 
 const SKILLS = [
-  { group: "CAD & Design",   items: ["SolidWorks", "Siemens NX", "GD&T", "Technical Drawing"] },
-  { group: "Analysis",       items: ["ANSYS","Statics & Dynamics"] },
-  { group: "Electronics",    items: ["Oscilloscope", "Soldering"] },
-  { group: "Software",       items: ["Python", "C"] },
-  { group: "Manufacturing",  items: ["3D Printing (FDM)", "Lathe & Mill", "Plasma Cutting"] },
+  { group: "CAD & Design",   items: ["SolidWorks", "Fusion 360", "Onshape", "GD&T", "Technical Drawing"] },
+  { group: "Analysis",       items: ["ANSYS", "FEA", "MATLAB", "Statics & Dynamics", "Thermofluids"] },
+  { group: "Electronics",    items: ["KiCad", "Oscilloscope", "Soldering", "Arduino", "STM32"] },
+  { group: "Software",       items: ["Python", "C / C++", "Git", "NumPy", "Linux"] },
+  { group: "Manufacturing",  items: ["3D Printing (FDM)", "Lathe & Mill", "Laser Cutting", "Composites"] },
 ];
 
 /* ----------------------------------------------------------------
@@ -94,15 +149,15 @@ const SKILLS = [
 const TIMELINE = [
   {
     period: "2025 — Present",
-    title: "BSME - Mechanical Engineering",
-    org: "University of Central Florida",
-    detail: "Relevant coursework: Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C, ",
+    title: "BEng Mechanical Engineering",
+    org: "Your University",
+    detail: "Relevant coursework: Statics, Materials Science, Engineering Design, Programming for Engineers.",
   },
   {
-    period: "May 2026 - Present",
-    title: "Machinist Apprectice",
-    org: "University of Central Florida - Office of Research",
-    detail: "Support UCF Senior Design teams and faculty-led research by translating design intent into manufacturable components, fixtures, and tooling using SolidWorks, GD&T, and first-principles problem-solving, while advising project teams on design for manufacturability to reduce rework and improve producibility with available shop equipment.",
+    period: "Summer 2025",
+    title: "Robotics Team — Mechanical Sub-team",
+    org: "University Robotics Society",
+    detail: "Designed and manufactured the drivetrain mounts for the competition robot.",
   },
 ];
 
@@ -416,14 +471,17 @@ $("c-cta").innerHTML =
 
 /* ---------- about ---------- */
 $("about-text").innerHTML = SITE.about.map(p => "<p>" + esc(p) + "</p>").join("");
-const facts = [
-  ["Focus", SITE.role],
-  ["Based in", SITE.location],
-  ["Projects", PROJECTS.length + " documented"],
-  ["Email", SITE.email ? '<a href="mailto:'+esc(SITE.email)+'">'+esc(SITE.email)+'</a>' : ""],
-].filter(f => f[1]);
-$("about-facts").innerHTML = facts
-  .map(([k,v]) => '<div class="kv"><span>'+esc(k)+'</span><span>'+(k==="Email"?v:esc(v))+'</span></div>').join("");
+function glanceValue(v){
+  if (v === "auto") return esc(PROJECTS.length + " documented");
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return '<a href="mailto:'+esc(v)+'">'+esc(v)+'</a>';
+  if (/^https?:\/\//.test(v)) return '<a href="'+esc(v)+'" target="_blank" rel="noopener">'
+    + esc(v.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,"")) + ' ↗</a>';
+  return esc(v);
+}
+$("about-facts").innerHTML = (typeof GLANCE !== "undefined" ? GLANCE : [])
+  .filter(r => r && r.label && r.value)
+  .map(r => '<div class="kv"><span>'+esc(r.label)+'</span><span>'+glanceValue(r.value)+'</span></div>')
+  .join("");
 
 /* ---------- projects + filters ---------- */
 const cats = ["All", ...new Set(PROJECTS.map(p => p.category).filter(Boolean))];
