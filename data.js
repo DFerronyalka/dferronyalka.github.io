@@ -69,63 +69,6 @@ const GLANCE = [
 const PROJECTS = [
   {
     draft: false,
-    id: "dta-1-drivetrain",
-    title: "DTA-1 Drivetrain Prototype",
-    year: "2026",
-    category: "Mechanical",
-    status: "Research & Design Phase",
-    blurb: "Dust-tolerant drivetrain for lunar surface robotics, pairing a CubeMars R80 KV110 motor with a two-stage 10:1 planetary gearbox in a compact 4-inch OD housing — sized from first principles for a 20 kg rover platform.",
-    highlights: [
-      "First-principles torque/speed sizing for a 20 kg rover platform.",
-      "Two-stage 10:1 planetary gearbox in a compact 4-inch OD housing.",
-      "Removable seal test cartridge for lunar dust-ingress testing.",
-    ],
-    tags: ["Mechanical Design", "Space Robotics", "SolidWorks", "Embedded DAQ"],
-    image: "",
-    links: {
-      github: "",
-      writeup: "",
-      demo: "",
-    },
-
-    /* ---- detail page ---- */
-    gallery: [
-      { src: "", caption: "DTA-1 assembly section view — motor, two-stage reduction, seal cartridge" },
-      { src: "", caption: "Seal test cartridge, removed from the housing" },
-      { src: "", caption: "<FILL IN: what this third image shows — test rig, printed prototype, or delete this line>" },
-    ],
-
-    problem: "Lunar regolith is abrasive, angular and electrostatically charged, and it degrades exactly the parts a rover cannot afford to lose: seals, bearings and gear meshes. Apollo-era hardware showed measurable wear within a single EVA. An actuator intended for sustained surface operations has to be designed around dust ingress as a primary load case rather than treated as an environmental footnote.\n\nDesign constraints for DTA-1: a 20 kg rover platform, a 4-inch outer-diameter housing envelope, and <FILL IN: your remaining hard constraints — target continuous torque, wheel speed, mass budget, operating temperature range, duty cycle>",
-
-    approach: "Sized the drivetrain from first principles rather than from a catalogue: derived required wheel torque and speed from platform mass, wheel diameter, worst-case slope and expected regolith rolling resistance, then worked back through a 10:1 two-stage planetary reduction to a continuous-torque requirement at the motor. That set the selection of the CubeMars R80 KV110 and drove the gearbox stage split.\n\nPackaged the reduction into a 4-inch OD housing, which forced <FILL IN: the specific packaging trade you made — e.g. planet count, stage ratio split, bearing arrangement, or where you gave up margin to hold the envelope>\n\nThe dust-tolerance strategy is a removable seal test cartridge: the sealing interface is isolated in a swappable module so different seal geometries and materials can be tested to failure without rebuilding the actuator. Instrumentation via <FILL IN: what the embedded DAQ measures — torque, current, temperature, seal drag — and at what rate>",
-
-    result: "<FILL IN: where the project actually stands. Anything real counts — the sizing calculation converged and here are the numbers, the CAD is complete at N parts, the first cartridge is printed, bench testing begins on this date. If nothing is built yet, say that plainly and state what the analysis predicts.>\n\nPredicted performance: <FILL IN: continuous torque at the wheel, no-load speed, gearbox efficiency estimate, total actuator mass>",
-
-    lessons: [
-      "<FILL IN: something the sizing or packaging work actually taught you — a constraint that turned out to dominate, an assumption that didn't survive, a number that surprised you.>",
-      "<FILL IN: what you'd change about the approach next time. This is the highest-value line on the page — reviewers read it as evidence you can evaluate your own work.>",
-    ],
-
-    specs: [
-      { k: "Platform mass",  v: "20 kg (design target)" },
-      { k: "Motor",          v: "CubeMars R80, KV110" },
-      { k: "Reduction",      v: "10:1, two-stage planetary" },
-      { k: "Housing OD",     v: "4 in" },
-      { k: "Cont. torque",   v: "<FILL IN>" },
-      { k: "Actuator mass",  v: "<FILL IN>" },
-      { k: "Seal interface", v: "Removable test cartridge" },
-      { k: "Status",         v: "Research & design" },
-    ],
-
-    files: [
-      { label: "Design report (PDF)",     url: "" },
-      { label: "CAD — STEP package",      url: "" },
-      { label: "Sizing calculations",     url: "" },
-    ],
-  },
-
-  {
-    draft: false,
     id: "wheel-light-mounting",
     title: "Wheel Light Mounting System",
     year: "2024-2026",
@@ -181,6 +124,63 @@ const PROJECTS = [
 
     ],
   },
+   {
+    draft: false,
+    id: "dta-1-drivetrain",
+    title: "DTA-1 Drivetrain Prototype",
+    year: "2026",
+    category: "Mechanical",
+    status: "Research & Design Phase",
+    blurb: "Dust-tolerant drivetrain for lunar surface robotics, pairing a CubeMars R80 KV110 motor with a two-stage 10:1 planetary gearbox in a compact 4-inch OD housing — sized from first principles for a 20 kg rover platform.",
+    highlights: [
+      "First-principles torque/speed sizing for a 20 kg rover platform.",
+      "Two-stage 10:1 planetary gearbox in a compact 4-inch OD housing.",
+      "Removable seal test cartridge for lunar dust-ingress testing.",
+    ],
+    tags: ["Mechanical Design", "Space Robotics", "SolidWorks", "Embedded DAQ"],
+    image: "",
+    links: {
+      github: "",
+      writeup: "",
+      demo: "",
+    },
+
+    /* ---- detail page ---- */
+    gallery: [
+      { src: "", caption: "DTA-1 assembly section view — motor, two-stage reduction, seal cartridge" },
+      { src: "", caption: "Seal test cartridge, removed from the housing" },
+      { src: "", caption: "<FILL IN: what this third image shows — test rig, printed prototype, or delete this line>" },
+    ],
+
+    problem: "Lunar regolith is abrasive, angular and electrostatically charged, and it degrades exactly the parts a rover cannot afford to lose: seals, bearings and gear meshes. Apollo-era hardware showed measurable wear within a single EVA. An actuator intended for sustained surface operations has to be designed around dust ingress as a primary load case rather than treated as an environmental footnote.\n\nDesign constraints for DTA-1: a 20 kg rover platform, a 4-inch outer-diameter housing envelope, and <FILL IN: your remaining hard constraints — target continuous torque, wheel speed, mass budget, operating temperature range, duty cycle>",
+
+    approach: "Sized the drivetrain from first principles rather than from a catalogue: derived required wheel torque and speed from platform mass, wheel diameter, worst-case slope and expected regolith rolling resistance, then worked back through a 10:1 two-stage planetary reduction to a continuous-torque requirement at the motor. That set the selection of the CubeMars R80 KV110 and drove the gearbox stage split.\n\nPackaged the reduction into a 4-inch OD housing, which forced <FILL IN: the specific packaging trade you made — e.g. planet count, stage ratio split, bearing arrangement, or where you gave up margin to hold the envelope>\n\nThe dust-tolerance strategy is a removable seal test cartridge: the sealing interface is isolated in a swappable module so different seal geometries and materials can be tested to failure without rebuilding the actuator. Instrumentation via <FILL IN: what the embedded DAQ measures — torque, current, temperature, seal drag — and at what rate>",
+
+    result: "<FILL IN: where the project actually stands. Anything real counts — the sizing calculation converged and here are the numbers, the CAD is complete at N parts, the first cartridge is printed, bench testing begins on this date. If nothing is built yet, say that plainly and state what the analysis predicts.>\n\nPredicted performance: <FILL IN: continuous torque at the wheel, no-load speed, gearbox efficiency estimate, total actuator mass>",
+
+    lessons: [
+      "<FILL IN: something the sizing or packaging work actually taught you — a constraint that turned out to dominate, an assumption that didn't survive, a number that surprised you.>",
+      "<FILL IN: what you'd change about the approach next time. This is the highest-value line on the page — reviewers read it as evidence you can evaluate your own work.>",
+    ],
+
+    specs: [
+      { k: "Platform mass",  v: "20 kg (design target)" },
+      { k: "Motor",          v: "CubeMars R80, KV110" },
+      { k: "Reduction",      v: "10:1, two-stage planetary" },
+      { k: "Housing OD",     v: "4 in" },
+      { k: "Cont. torque",   v: "<FILL IN>" },
+      { k: "Actuator mass",  v: "<FILL IN>" },
+      { k: "Seal interface", v: "Removable test cartridge" },
+      { k: "Status",         v: "Research & design" },
+    ],
+
+    files: [
+      { label: "Design report (PDF)",     url: "" },
+      { label: "CAD — STEP package",      url: "" },
+      { label: "Sizing calculations",     url: "" },
+    ],
+  },
+
 ];
 
 /* ------------------------------------------------------------------
