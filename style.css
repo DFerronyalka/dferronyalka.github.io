@@ -283,3 +283,11 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);
 .draftbar strong{color:var(--warn)}
 .draftbar code{font-family:var(--mono);font-size:12.5px;
   background:rgba(210,153,34,.14);padding:1px 5px;border-radius:4px}
+
+/* timeline: facts sit inline in the subheading line */
+.tl-item .org .sep{font-style:normal;color:var(--line-2);margin:0 8px}
+.tl-item .org .f{color:var(--muted-2)}
+/* timeline: bulleted detail */
+.det.bullets{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:2px}
+.det.bullets li{position:relative;padding-left:16px;line-height:1.55}
+.det.bullets li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-size:10px;top:3px}

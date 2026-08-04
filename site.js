@@ -214,12 +214,33 @@
       '<div class="card"><h4>'+esc(s.group)+'</h4><ul>'
       + s.items.map(i => "<li>"+esc(i)+"</li>").join("") + "</ul></div>").join("");
 
+    const tlDetail = d => {
+      if (!d) return "";
+      // A single string becomes a paragraph; a list becomes bullets.
+      if (Array.isArray(d))
+        return '<ul class="det bullets">'
+          + d.map(x => '<li>'+markFill(esc(x))+'</li>').join("") + '</ul>';
+      return '<div class="det">'+markFill(esc(d))+'</div>';
+    };
+    // Organisation and facts share one subheading line, separated by dots:
+    //   University of Central Florida · Graduating May 2028 · GPA 3.82 / 4.00
+    const tlSub = t => {
+      const parts = [];
+      if (t.org) parts.push(esc(t.org));
+      (t.facts || []).filter(x => x && x.k).forEach(x =>
+        parts.push('<span class="f">' + esc(x.k)
+          + (x.v ? " " + markFill(esc(x.v)) : "") + '</span>'));
+      return parts.length
+        ? '<div class="org">' + parts.join('<i class="sep">·</i>') + '</div>'
+        : "";
+    };
+
     $("tl").innerHTML = TIMELINE.map(t =>
       '<div class="tl-item">'
       + '<div class="per">'+esc(t.period)+'</div>'
       + '<h3>'+esc(t.title)+'</h3>'
-      + (t.org ? '<div class="org">'+esc(t.org)+'</div>' : "")
-      + (t.detail ? '<div class="det">'+esc(t.detail)+'</div>' : "")
+      + tlSub(t)
+      + tlDetail(t.detail)
       + '</div>').join("");
 
     /* active nav link on scroll */
