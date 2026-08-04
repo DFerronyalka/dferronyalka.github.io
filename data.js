@@ -219,6 +219,8 @@ const TIMELINE = [
     title: "Associate of Arts",
     org: "State College of Florida",
     facts: [{k: "GPA:", v: "3.82 / 4.00"},
+            {k: "President's List:", v: "Fall 2024, Spring/Fall 2025"},
+            {k: "Dean's List:", v: "Spring/Summer 2024"},
            ],
     detail: "Completed the lower-division engineering sequence prior to transferring to UCF: Calculus I–III, Physics I with labs, and Chemistry. Recognized as Outstanding Student in American Sign Language, 2025.",
   },
