@@ -212,7 +212,7 @@ const TIMELINE = [
     facts: [{k: "Expected Graduation:", v: "May 2028"},
             {k: "GPA:", v: "3.85 / 4.00"},
             ],
-    detail: "Relevant coursework: Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C.",
+    detail: "Relevant coursework: Differential Equations, Physics II with lab, Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C.",
   },
   {
     period: "2024 — 2025",
@@ -220,15 +220,14 @@ const TIMELINE = [
     org: "State College of Florida",
     facts: [{k: "GPA:", v: "3.82 / 4.00"},
             {k: "President's List:", v: "Fall 2024, Spring/Fall 2025"},
-            {k: "Dean's List:", v: "Spring/Summer 2024"},
            ],
-    detail: "Completed the lower-division engineering sequence prior to transferring to UCF: Calculus I–III, Physics I with labs, and Chemistry. Recognized as Outstanding Student in American Sign Language, 2025.",
+    detail: "Completed the lower-division engineering sequence prior to transferring to UCF: Calculus I–III, Physics I with lab, and Chemistry. Recognized as Outstanding Student in American Sign Language, 2025.",
   },
   {
     period: "2020 — 2025",
     title: "Mechanical Design and Fabrication Technician",
     org: "AFNY Specialties",
-    detail: "Carried hardware from concept through installation for off-highway and commercial platforms — remotely from 2020 to 2023 while on active duty, then on-site part-time through 2025 while completing an A.A. Designed SolidWorks assemblies ranging from single-piece brackets to 10–15 part assemblies and suspension hardware engineered for high-vibration duty, producing the BOMs, drawings, and assembly notes that supported the build. Fabrication ran alongside design, CNC plasma (SheetCAM), press brake forming, and standardized threading on a FlexArm system. Which kept every design accountable to what the shop could actually produce.",
+    detail: "Carried hardware from concept through installation for off-highway and commercial platforms — remotely from 2020 to 2023 while on active duty, then on-site part-time through 2025 while completing an A.A. Designed SolidWorks assemblies ranging from single-piece brackets to 10–15 part assemblies and suspension hardware engineered for high-vibration duty, producing the BOMs, drawings, and assembly notes that supported the build. Fabrication ran alongside design, CNC plasma (SheetCAM), press brake forming, and standardized threading on a FlexArm system, which kept every design accountable to what the shop could actually produce.",
   },
   {
     period: "July 2017 — December 2023",
