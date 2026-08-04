@@ -273,3 +273,13 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);
   border:1px dashed rgba(210,153,34,.45);border-radius:5px;
   padding:1px 6px;margin:0 1px;white-space:normal;
 }
+
+/* draft notice on unpublished project pages */
+.draftbar{
+  margin:24px 0 -14px;padding:13px 18px;border-radius:10px;font-size:14px;
+  color:var(--warn);background:rgba(210,153,34,.09);
+  border:1px solid rgba(210,153,34,.35);
+}
+.draftbar strong{color:var(--warn)}
+.draftbar code{font-family:var(--mono);font-size:12.5px;
+  background:rgba(210,153,34,.14);padding:1px 5px;border-radius:4px}

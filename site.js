@@ -27,6 +27,10 @@
        (p.files && p.files.length) ||
        (p.gallery && p.gallery.length));
 
+  // Projects marked `draft: true` are hidden from the home page.
+  // They stay reachable by direct link so you can preview them.
+  const live = () => PROJECTS.filter(p => !p.draft);
+
   const LINK_LABELS = { github:"Code", writeup:"Write-up", demo:"Demo",
                         video:"Video", cad:"CAD files", paper:"Paper" };
 
@@ -72,7 +76,9 @@
   /* ---------- shared chrome: brand, nav, footer ---------- */
   function chrome(){
     const brand = $("brand");
-    if (brand) brand.innerHTML = esc(String(SITE.name).split(" ")[0]) + '<span>.</span>';
+    // SITE.brand wins if you set it; otherwise use your first name.
+    if (brand) brand.innerHTML =
+      esc(SITE.brand || String(SITE.name).split(" ")[0]) + '<span>.</span>';
     const fn = $("f-name");
     if (fn) fn.textContent = "© " + new Date().getFullYear() + " " + SITE.name;
 
@@ -128,9 +134,10 @@
       + (SITE.github ? '<a class="btn" href="'+esc(SITE.github)+'" target="_blank" rel="noopener">GitHub ↗</a>' : "");
 
     /* about */
+    const LIVE = live();
     $("about-text").innerHTML = (SITE.about||[]).map(p => "<p>"+esc(p)+"</p>").join("");
     const glanceValue = v => {
-      if (v === "auto") return esc(PROJECTS.length + " documented");
+      if (v === "auto") return esc(LIVE.length + " documented");
       if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return '<a href="mailto:'+esc(v)+'">'+esc(v)+'</a>';
       if (/^https?:\/\//.test(v)) return '<a href="'+esc(v)+'" target="_blank" rel="noopener">'
         + esc(v.replace(/^https?:\/\/(www\.)?/,"").replace(/\/$/,"")) + ' ↗</a>';
@@ -142,12 +149,12 @@
       .join("");
 
     /* filters */
-    const cats = ["All", ...new Set(PROJECTS.map(p => p.category).filter(Boolean))];
+    const cats = ["All", ...new Set(LIVE.map(p => p.category).filter(Boolean))];
     let active = "All";
     $("filters").innerHTML = cats.map(c =>
       '<button class="chip'+(c===active?" on":"")+'" data-cat="'+esc(c)+'">'+esc(c)
       + ' <span style="opacity:.55">'
-      + (c==="All" ? PROJECTS.length : PROJECTS.filter(p => p.category===c).length)
+      + (c==="All" ? LIVE.length : LIVE.filter(p => p.category===c).length)
       + '</span></button>').join("");
 
     function card(p){
@@ -170,7 +177,7 @@
     }
 
     function draw(){
-      const list = active === "All" ? PROJECTS : PROJECTS.filter(p => p.category === active);
+      const list = active === "All" ? LIVE : LIVE.filter(p => p.category === active);
       $("grid").innerHTML = list.length
         ? list.map(card).join("")
         : '<p class="empty">No projects in this category yet.</p>';
@@ -218,8 +225,7 @@
      ================================================================== */
   function renderProject(){
     const wanted = new URLSearchParams(location.search).get("id");
-    const idx = PROJECTS.findIndex(p => pid(p) === wanted);
-    const p = idx > -1 ? PROJECTS[idx] : null;
+    const p = PROJECTS.find(x => pid(x) === wanted) || null;
 
     if (!p) {
       document.title = "Project not found — " + SITE.name;
@@ -233,6 +239,13 @@
     document.title = p.title + " — " + SITE.name;
     const md = document.querySelector('meta[name="description"]');
     if (md && p.blurb) md.setAttribute("content", p.blurb);
+
+    /* --- draft notice --- */
+    $("p-draft").innerHTML = p.draft
+      ? '<div class="draftbar"><strong>Draft — not listed on the site.</strong> '
+        + 'This page is only reachable by direct link. Remove <code>draft: true</code> '
+        + 'in data.js to publish it.</div>'
+      : "";
 
     /* --- hero --- */
     const heroLinks = extLinks(p.links)
@@ -290,7 +303,10 @@
     $("p-side").innerHTML = side;
 
     /* --- prev / next --- */
-    const prev = PROJECTS[idx - 1], next = PROJECTS[idx + 1];
+    const LIVE = live();
+    const li = LIVE.findIndex(x => pid(x) === wanted);
+    const prev = li > -1 ? LIVE[li - 1] : null;
+    const next = li > -1 ? LIVE[li + 1] : null;
     const cell = (q, dir, cls) => q
       ? '<a class="'+cls+'" href="project.html?id='+encodeURIComponent(pid(q))+'">'
         + '<div class="dir">'+dir+'</div><div class="t">'+esc(q.title)+'</div></a>'
