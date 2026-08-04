@@ -1,0 +1,11 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "description": "Static build step: renders data.js into plain HTML so the site is readable without JavaScript.",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "jsdom": "^26.0.0"
+  }
+}

@@ -27,9 +27,27 @@
        (p.files && p.files.length) ||
        (p.gallery && p.gallery.length));
 
+  // Where a project's page lives.
+  // Live site: clean folder URLs (projects/my-project/) that the build
+  // step writes as real, fully-rendered HTML files.
+  // Local preview (double-clicking index.html): fall back to the query
+  // form, which works without a build.
+  const projUrl = p => (location.protocol === "file:")
+    ? "project.html?id=" + encodeURIComponent(pid(p))
+    : "projects/" + encodeURIComponent(pid(p)) + "/";
+
   // Projects marked `draft: true` are hidden from the home page.
   // They stay reachable by direct link so you can preview them.
   const live = () => PROJECTS.filter(p => !p.draft);
+
+  // Path back to the home page from wherever this page is.
+  const home = () => /\/projects\/[^\/]+\/?$/.test(location.pathname)
+    ? "../../index.html" : "index.html";
+
+  // One-tap email: prefilled subject so a reply lands in the right thread.
+  // Override the subject by adding  emailSubject: "..."  to SITE in data.js.
+  const mailto = () => "mailto:" + SITE.email + "?subject="
+    + encodeURIComponent(SITE.emailSubject || "Internship Opportunity");
 
   const LINK_LABELS = { github:"Code", writeup:"Write-up", demo:"Demo",
                         video:"Video", cad:"CAD files", paper:"Paper" };
@@ -129,7 +147,7 @@
     $("h-cta").innerHTML = cta;
 
     $("c-cta").innerHTML =
-      (SITE.email ? '<a class="btn primary" href="mailto:'+esc(SITE.email)+'">Email me</a>' : "")
+      (SITE.email ? '<a class="btn primary" href="'+esc(mailto())+'">Email me</a>' : "")
       + (SITE.linkedin ? '<a class="btn" href="'+esc(SITE.linkedin)+'" target="_blank" rel="noopener">LinkedIn ↗</a>' : "")
       + (SITE.github ? '<a class="btn" href="'+esc(SITE.github)+'" target="_blank" rel="noopener">GitHub ↗</a>' : "");
 
@@ -159,7 +177,7 @@
 
     function card(p){
       const detail = hasDetail(p);
-      const href = "project.html?id=" + encodeURIComponent(pid(p));
+      const href = projUrl(p);
       const links = extLinks(p.links);
       if (detail) links.push('<a class="more" href="'+href+'">Full write-up →</a>');
       return '<article class="proj'+(detail?" clickable":"")+'">'
@@ -224,7 +242,11 @@
      PROJECT DETAIL PAGE
      ================================================================== */
   function renderProject(){
-    const wanted = new URLSearchParams(location.search).get("id");
+    let wanted = new URLSearchParams(location.search).get("id");
+    if (!wanted) {
+      const m = location.pathname.match(/\/projects\/([^\/]+)\/?$/);
+      if (m) wanted = decodeURIComponent(m[1]);
+    }
     const p = PROJECTS.find(x => pid(x) === wanted) || null;
 
     if (!p) {
@@ -232,13 +254,18 @@
       $("p-root").innerHTML =
         '<div class="nf"><h1>Project not found</h1>'
         + '<p>That link doesn\'t match any project on this site. It may have been renamed.</p>'
-        + '<a class="btn primary" href="index.html#projects">See all projects</a></div>';
+        + '<a class="btn primary" href="'+home()+'#projects">See all projects</a></div>';
       return;
     }
 
     document.title = p.title + " — " + SITE.name;
-    const md = document.querySelector('meta[name="description"]');
-    if (md && p.blurb) md.setAttribute("content", p.blurb);
+    const setMeta = (sel, val) => {
+      const el = document.querySelector(sel);
+      if (el && val) el.setAttribute("content", val);
+    };
+    setMeta('meta[name="description"]', p.blurb);
+    setMeta('meta[property="og:description"]', p.blurb);
+    setMeta('meta[property="og:title"]', p.title + " — " + SITE.name);
 
     /* --- draft notice --- */
     $("p-draft").innerHTML = p.draft
@@ -251,7 +278,7 @@
     const heroLinks = extLinks(p.links)
       .map(a => a.replace('<a ', '<a class="btn" '));
     $("p-hero").innerHTML =
-      '<a class="back" href="index.html#projects">← All projects</a>'
+      '<a class="back" href="'+home()+'#projects">← All projects</a>'
       + '<div class="ptop">'+badges(p)+'</div>'
       + '<h1>'+esc(p.title)+'</h1>'
       + (p.blurb ? '<p class="lede">'+markFill(esc(p.blurb))+'</p>' : "")
@@ -308,7 +335,7 @@
     const prev = li > -1 ? LIVE[li - 1] : null;
     const next = li > -1 ? LIVE[li + 1] : null;
     const cell = (q, dir, cls) => q
-      ? '<a class="'+cls+'" href="project.html?id='+encodeURIComponent(pid(q))+'">'
+      ? '<a class="'+cls+'" href="'+projUrl(q)+'">'
         + '<div class="dir">'+dir+'</div><div class="t">'+esc(q.title)+'</div></a>'
       : '<span></span>';
     $("p-nav").innerHTML =
