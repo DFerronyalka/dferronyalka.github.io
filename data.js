@@ -49,7 +49,7 @@ const GLANCE = [
   { label: "Clearance", value: "DoD Secret (Inactive, adjudicated 2017)" },
   { label: "Based in",  value: "Orlando, FL - open to relocation" },
   { label: "Graduating",value: "May 2028 (expected)" },
-  { label: "GPA",      value: "3.82 / 4.00" },
+  { label: "GPA",      value: "3.85 / 4.00" },
   { label: "Availability",  value: "Summer 2027 - 12 weeks, full-time, onsite" },
   { label: "Email",     value: "dferronyalka@gmail.com" },
 ];
