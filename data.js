@@ -66,7 +66,7 @@ const GLANCE = [
 
 const PROJECTS = [
   {
-    draft: true,
+    draft: false,
     id: "dta-1-drivetrain",
     title: "DTA-1 Drivetrain Prototype",
     year: "2026",
