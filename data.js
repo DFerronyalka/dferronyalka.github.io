@@ -47,7 +47,7 @@ const SITE = {
 const GLANCE = [
   { label: "Focus",     value: "Mechanical Design & Space Robotics" },
   { label: "Clearance", value: "DoD Secret (Inactive, adjudicated 2017)" },
-  { label: "Based in",  value: "Orlando, FL - open to relocation },
+  { label: "Based in",  value: "Orlando, FL - open to relocation" },
   { label: "Graduating",value: "May 2028 (expected)" },
   { label: "GPA",      value: "3.82 / 4.00" },
   { label: "Availability",  value: "[Summer 2027]\n - 12 weeks,fulltime,onsite" },
