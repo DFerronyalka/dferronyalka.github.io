@@ -191,7 +191,7 @@ const SKILLS = [
   { group: "Certifications", items: ["CSWA (Solidworks - Associate)"] },
   { group: "CAD & Design",   items: ["SolidWorks", "Siemens NX", "GD&T (ASMY Y14.5)", "Technical Drawing", "Tolerance Stack-Up", "DFM"] },
   { group: "Analysis",       items: ["ANSYS - Static Structural", "First-Principles Sizing", "Shaft & Gear Load Analysis"] },
-  { group: "Electronics",    items: ["RADAR & 400 Hz Power Systems", "BLDC Motor Control (VESC)", "Load Cells", "Thermocouiples", "IMU", "Data Acquistions", "Oscilloscope", "Soldering"] },
+  { group: "Electronics",    items: ["RADAR & 400 Hz Power Systems", "BLDC Motor Control (VESC)", "Load Cells", "Thermocouples", "IMU", "Data Acquistions", "Oscilloscope", "Soldering"] },
   { group: "Software",       items: ["Python", "C", "Embedded (RP2040 / Raspbery Pi)"] },
   { group: "Manufacturing",  items: ["Manual Lathe & Mill", "CNC Plasma", "SheetCAM", "FDM", "Fixture Design"] },
 ];
@@ -210,7 +210,7 @@ const TIMELINE = [
   {
     period: "2026 — Present",
     title: "BSME — Mechanical Engineering",
-    org: "University of Central Florida",
+    org: "University of Central Florida\nExpected Graduation: Spring 2028\tGPA: 3.82 / 4.00",
     detail: "Relevant coursework: Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C.",
   },
   {
