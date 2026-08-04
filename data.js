@@ -77,7 +77,7 @@ const PROJECTS = [
     highlights: [
       "Modular mounting design engineered for vibration resistance and serviceability.",
       "Manufacturing-ready drawings and BOM developed in SolidWorks with full GD&T.",
-      "Prototype fabricated via CNC plasma cutting and secondary operations, validated through torque checks and road testing.",
+      "Prototype fabricated via Laser-cut flat patterns and secondary operations, validated through torque checks and road testing.",
     ],
     tags: ["Mechanical Design", "SolidWorks", "GD&T", "CNC Fabrication"],
     image: "",
@@ -89,14 +89,14 @@ const PROJECTS = [
 
     /* ---- detail page ---- */
     gallery: [
-      { src: "", caption: "Mounted assembly on the vehicle" },
-      { src: "", caption: "SolidWorks assembly — modular bracket architecture" },
-      { src: "", caption: "Plasma-cut blanks before secondary operations" },
+      { src: "images/Wheel_Light_First_Prototype.jpg", caption: "First prototype set — laser-cut stainless bracket members and an assembled ring mount, laid out prior to fitment." },
+      { src: "images/Wheel_Light_Fitment.jpg", caption: "	Front assembly installed on the steering knuckle, mounted to existing caliper and hub bolts. The ring clears the rotor, caliper, and tie rod with the wheel in place." },
+      { src: "images/Wheel_Light_Patent.jpg", caption: "Fig. 1 — the four bracket assemblies: driver-side knuckle (12), passenger-side knuckle (14), and rear axle hub (16), which fits either side. U.S. Patent 12,673,603 B2." },
     ],
 
     problem: "Wheel ring lights are conventionally mounted to the brake dust shield — a thin stamped panel whose only job is deflecting debris. It carries no design load, has no structural stiffness, and was never intended to support a ring assembly hanging off it in an unsprung, rotating, continuously shock-loaded position. Mounting to it is a known bad practice in the industry, and it's the default anyway because it's the only flat surface behind the wheel that's easy to reach.\n\nThe alternative isn't obvious. Anything stiff enough to mount to — knuckle, hub, caliper bracket — is already crowded with brake and suspension hardware, varies by vehicle, and can't be drilled or modified without creating a liability. Whatever replaces the dust shield mount has to clear the rotor and caliper through full articulation, use only fasteners the vehicle already has, and still come apart for brake service without removing the light ring from the vehicle.\n\nDesign constraints: <FILL IN — target vehicle platforms/model years, wheel diameter and backspacing range, ring light fixtures supported>",
 
-    approach: "The system attaches to structural vehicle components instead of the dust shield — specifically the steering knuckle at the front and the axle hub assembly at the rear. Bracket geometry is shaped to wrap the existing contours of those components, and mounting holes are positioned to land on bolts the vehicle already has: axle flange and caliper bolts at the knuckle, hub flange bolts at the rear axle. Nothing is drilled, welded, or modified on the vehicle.\n\nThree bracket assemblies cover the vehicle: a driver-side knuckle assembly, a passenger-side knuckle assembly (mirrored, not identical, because the knuckles aren't), and a rear axle assembly that fits either side. Each carries a ring-shaped mount that accepts ring lights on both its inner and outer circumference via strap fasteners.\n\nServiceability is built into the bracket topology. Rather than one welded structure, each assembly is several bracket members removably coupled to one another. That lets the ring mount come off for brake work without disturbing the rest of the assembly — the constraint that usually kills aftermarket lighting installs.\n\nMy contribution covered <FILL IN — which of the three assemblies you owned, which analyses, which drawings>, including SolidWorks drawings dimensioned with GD&T per ASME Y14.5 for CNC plasma and downstream secondary operations, plus the released BOM.",
+    approach: "The system attaches to structural vehicle components instead of the dust shield — specifically the steering knuckle at the front and the axle hub assembly at the rear. Bracket geometry is shaped to wrap the existing contours of those components, and mounting holes are positioned to land on bolts the vehicle already has: axle flange and caliper bolts at the knuckle, hub flange bolts at the rear axle. Nothing is drilled, welded, or modified on the vehicle.\n\nThree bracket assemblies cover the vehicle: a driver-side knuckle assembly, a passenger-side knuckle assembly (mirrored, not identical, because the knuckles aren't), and a rear axle assembly that fits either side. Each carries a ring-shaped mount that accepts ring lights on both its inner and outer circumference via strap fasteners.\n\nServiceability is built into the bracket topology. Rather than one welded structure, each assembly is several bracket members removably coupled to one another. That lets the ring mount come off for brake work without disturbing the rest of the assembly — the constraint that usually kills aftermarket lighting installs.\n\nMy contribution covered initial design and prototyping — FDM-printed fit-check articles validated bracket geometry against the vehicle before SolidWorks drawings and flat patterns, dimensioned with GD&T per ASME Y14.5, were released to an outside laser-cutting supplier. I formed and assembled the resulting prototype set.",
     result: "U.S. Patent No. 12,673,603 B2 issued to Shoreline Offroad, LLC, naming three co-inventors. Eleven claims across three independent claims cover the ring-mount-plus-bracket-assembly architecture, with the mounting location expressly claimed as something other than a brake dust shield, and the steering knuckle and axle hub named specifically.\n\nPrototypes were fabricated via CNC plasma cutting and secondary operations, then validated through fitment checks, torque checks, and road testing.\n\n<FILL IN — hard numbers: vehicle platforms fitted, units built, test miles, retorque results, whether units are in service. Two real numbers here outweigh a paragraph of description.>\n\nRights were assigned prior to issuance; inventorship remains on the patent record.",
 
     lessons: [
@@ -114,7 +114,7 @@ const PROJECTS = [
       { k: "Assignee",  v: "Shoreline Offroad Co." },
       { k: "Application",    v: "2018-2025 Jeep Wrangler (4dr)" },
       { k: "Material",    v: "Mild Steel" },
-      { k: "Fabrication",    v: "CNC Plasma + Secondary Operations" },
+      { k: "Fabrication",    v: "Laser-cut flat patterns, formed and assembled in-house" },
       { k: "Status",    v: "Patent Granted" },
     ],
 
