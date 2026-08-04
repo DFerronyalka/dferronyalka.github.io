@@ -108,13 +108,13 @@ const PROJECTS = [
     specs: [
       { k: "Patent",       v: "US 12,673,603 B2" },
       { k: "Issue Date",      v: "2026-07-07" },
-      { k: "Application no.",    v: "19/314,475." },
+      { k: "Application no.",    v: "19/314,475" },
       { k: "Filed",       v: "2024" },
       { k: "Inventors",         v: "Joshua West,\nDrake Ferronyalka,\nAndre Ferronyalka" },
       { k: "Assignee",  v: "Shoreline Offroad Co." },
       { k: "Application",    v: "2018-2025 Jeep Wrangler (4dr)" },
       { k: "Material",    v: "Mild Steel" },
-      { k: "Fabrication",    v: "CNC PLasma + Secondary Operations" },
+      { k: "Fabrication",    v: "CNC Plasma + Secondary Operations" },
       { k: "Status",    v: "Patent Granted" },
     ],
 
@@ -209,7 +209,10 @@ const TIMELINE = [
   {
     period: "2026 — Present",
     title: "BSME — Mechanical Engineering",
-    org: "University of Central Florida      Expected Graduation: May 2028      GPA: 3.82 / 4.00",
+    org: "University of Central Florida",
+    facts: [{k: "Expected Graduation:", v: "May 2028"},
+            {k: "GPA:", v: "3.82 / 4.00"},
+            ],
     detail: "Relevant coursework: Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C.",
   },
   {
