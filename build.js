@@ -65,7 +65,15 @@ async function render(templateFile, url) {
   if (!w.document.getElementById("brand").textContent.trim()) {
     throw new Error("Nothing rendered for " + templateFile + " — check data.js");
   }
-  return { dom, html: dom.serialize(), window: w };
+  return { dom, html: cleanUrls(dom.serialize()), window: w };
+}
+
+/* Rewrite project.html?id=x links to real folder URLs, which is where
+   the build writes each page. The query form still works if anything
+   is missed, so this can only improve the links, never break them. */
+function cleanUrls(html) {
+  return html.replace(/href="project\.html\?id=([^"]+)"/g,
+    (_, id) => 'href="projects/' + id + '/"');
 }
 
 /* ---------- read the project list ---------- */
@@ -112,8 +120,8 @@ for (const p of list) {
   }
 
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, "index.html"), w.document.documentElement.outerHTML
-    .replace(/^/, "<!DOCTYPE html>\n"));
+  fs.writeFileSync(path.join(dir, "index.html"),
+    "<!DOCTYPE html>\n" + cleanUrls(w.document.documentElement.outerHTML));
   pages++;
   console.log("built  /projects/" + id + "/");
 }

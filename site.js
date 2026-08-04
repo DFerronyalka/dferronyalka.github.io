@@ -28,13 +28,11 @@
        (p.gallery && p.gallery.length));
 
   // Where a project's page lives.
-  // Live site: clean folder URLs (projects/my-project/) that the build
-  // step writes as real, fully-rendered HTML files.
-  // Local preview (double-clicking index.html): fall back to the query
-  // form, which works without a build.
-  const projUrl = p => (location.protocol === "file:")
-    ? "project.html?id=" + encodeURIComponent(pid(p))
-    : "projects/" + encodeURIComponent(pid(p)) + "/";
+  // Always the query form at runtime — it works everywhere, with or
+  // without the build step, locally or live. The build rewrites these
+  // to clean /projects/<id>/ URLs in the saved HTML, and both keep
+  // working, so nothing can 404 if a build hasn't run.
+  const projUrl = p => "project.html?id=" + encodeURIComponent(pid(p));
 
   // Projects marked `draft: true` are hidden from the home page.
   // They stay reachable by direct link so you can preview them.
