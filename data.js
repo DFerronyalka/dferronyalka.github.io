@@ -68,7 +68,7 @@ const GLANCE = [
 
 const PROJECTS = [
   {
-    draft: false,
+    draft: true,
     id: "dta-1-drivetrain",
     title: "DTA-1 Drivetrain Prototype",
     year: "2026",
@@ -125,7 +125,7 @@ const PROJECTS = [
   },
 
   {
-    draft: false,
+    draft: true,
     id: "wheel-light-mounting",
     title: "Wheel Light Mounting System",
     year: "2024-2026",
