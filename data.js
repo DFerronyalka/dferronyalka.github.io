@@ -209,7 +209,7 @@ const TIMELINE = [
   {
     period: "2026 — Present",
     title: "BSME — Mechanical Engineering",
-    org: "University of Central Florida","Expected Graduation: May 2028","GPA: 3.82 / 4.00",
+    org: "University of Central Florida      Expected Graduation: May 2028      GPA: 3.82 / 4.00",
     detail: "Relevant coursework: Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C.",
   },
   {
