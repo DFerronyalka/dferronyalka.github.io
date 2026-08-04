@@ -67,7 +67,7 @@ const GLANCE = [
 
 const PROJECTS = [
   {
-    draft: true,
+    draft: false,
     id: "wheel-light-mounting",
     title: "Wheel Light Mounting System",
     year: "2024-2026",
