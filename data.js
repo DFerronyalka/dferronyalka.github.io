@@ -25,7 +25,7 @@
 const SITE = {
   name:      "Drake Ferronyalka",
   role:      "Mechanical & Robotics Engineering Student",
-  tagline:   "I design, build and test physical systems — from CAD and machined parts to embedded control. Currently studying engineering and looking for internship opportunities.",
+  tagline:   "I design, build and test physical systems — from CAD and machined parts to embedded control. Six years maintaining shipboard radar and 400 Hz power systems, now designing actuators for lunar dust environments.",
   location:  "Orlando, FL, United States",
   email:     "dferronyalka@gmail.com",
   // Leave any of these as "" to hide the button.
@@ -46,11 +46,13 @@ const SITE = {
 
 const GLANCE = [
   { label: "Focus",     value: "Mechanical Design & Space Robotics" },
-  { label: "Clearance", value: "DoD Secret (Active)" },
-  { label: "Based in",  value: "Orlando, FL, USA" },
-  { label: "Year",      value: "3rd Year - BSME" },
-  { label: "Projects",  value: "auto" },
+  { label: "Clearance", value: "DoD Secret (Inactive, adjudicated 2017)" },
+  { label: "Based in",  value: "Orlando, FL - open to relocation },
+  { label: "Graduating",value: "May 2028 (expected)" },
+  { label: "GPA",      value: "3.82 / 4.00" },
+  { label: "Availability",  value: "[Summer 2027]\n - 12 weeks,fulltime,onsite" },
   { label: "Email",     value: "dferronyalka@gmail.com" },
+  { label: "Projects",  value: "auto" },
 ];
 
 /* ==================================================================
@@ -186,12 +188,12 @@ const PROJECTS = [
    ------------------------------------------------------------------ */
 
 const SKILLS = [
-  { group: "Certifications", items: ["CSWA"] },
-  { group: "CAD & Design",   items: ["SolidWorks", "Siemens NX", "GD&T", "Technical Drawing"] },
-  { group: "Analysis",       items: ["ANSYS", "Statics & Dynamics"] },
-  { group: "Electronics",    items: ["Oscilloscope", "Soldering"] },
-  { group: "Software",       items: ["Python", "C"] },
-  { group: "Manufacturing",  items: ["3D Printing (FDM)", "Lathe & Mill", "Plasma Cutting", "SheetCAM"] },
+  { group: "Certifications", items: ["CSWA (Solidworks - Associate)"] },
+  { group: "CAD & Design",   items: ["SolidWorks", "Siemens NX", "GD&T (ASMY Y14.5)", "Technical Drawing", "Tolerance Stack-Up", "DFM"] },
+  { group: "Analysis",       items: ["ANSYS - Static Structural", "First-Principles Sizing", "Shaft & Gear Load Analysis"] },
+  { group: "Electronics",    items: ["RADAR & 400 Hz Power Systems", "BLDC Motor Control (VESC)", "Load Cells", "Thermocouiples", "IMU", "Data Acquistions", "Oscilloscope", "Soldering"] },
+  { group: "Software",       items: ["Python", "C", "Embedded (RP2040 / Raspbery Pi)"] },
+  { group: "Manufacturing",  items: ["Manual Lathe & Mill", "CNC Plasma", "SheetCAM", "FDM", "Fixture Design"] },
 ];
 
 /* ------------------------------------------------------------------
@@ -206,7 +208,7 @@ const TIMELINE = [
     detail: "Support UCF Senior Design teams and faculty-led research by translating design intent into manufacturable components, fixtures, and tooling using SolidWorks, GD&T, and first-principles problem-solving, while advising project teams on design for manufacturability to reduce rework and improve producibility with available shop equipment.",
   },
   {
-    period: "2025 — Present",
+    period: "2026 — Present",
     title: "BSME — Mechanical Engineering",
     org: "University of Central Florida",
     detail: "Relevant coursework: Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C.",
@@ -215,6 +217,6 @@ const TIMELINE = [
     period: "July 2017 — December 2023",
     title: "Fire Controlman — AEGIS",
     org: "United States Navy",
-    detail: "Maintained and troubleshot MK 99 T-1348 Radar Transmitter and ACSSFC 400 Hz power systems aboard DDG-class ships, executing preventive and corrective maintenance to sustain operational readiness in high-tempo environments. Led and trained 10+ technicians on diagnostics, troubleshooting workflows, and procedure compliance. Held an active DoD Secret Clearance (adjudicated 2017).",
+    detail: "Maintained and troubleshot MK 99 T-1348 Radar Transmitter and ACSSFC 400 Hz power systems aboard DDG-class ships, executing preventive and corrective maintenance to sustain operational readiness in high-tempo environments. Led and trained 10+ technicians on diagnostics, troubleshooting workflows, and procedure compliance. Previously held a DoD Secret Clearance (U.S. Navy, adjudicated 2017) through December 2023.",
   },
 ];
