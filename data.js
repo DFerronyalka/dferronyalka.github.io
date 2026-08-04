@@ -80,7 +80,7 @@ const PROJECTS = [
       "Prototype fabricated via Laser-cut flat patterns and secondary operations, validated through torque checks and road testing.",
     ],
     tags: ["Mechanical Design", "SolidWorks", "GD&T", "CNC Fabrication"],
-    image: "image/Wheel_Light_Fitment_Thumbnail.jpg",
+    image: "images/Wheel_Light_Fitment_Thumbnail.jpg",
     links: {
       github: "",
       writeup: "",
