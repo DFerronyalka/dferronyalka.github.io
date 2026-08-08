@@ -206,25 +206,26 @@ const PROJECTS = [
       { src: "", caption: "" },
     ],
 
-    problem: "",
+    problem: "The X-axis on AFNY's Langmuir CrossFire XR rides on a hand-preloaded ball bearing carriage. Preload is set by rotating eccentric adjusters by feel and locking them with flange nuts, so there is no repeatable reference and no way to return to a known setting.\n\nOperating the machine through a Florida year, motion was smooth and consistent at shop temperatures around 85 F. As temperatures dropped near 30 F in winter, the X-axis became sticky and sporadic, and the carriage required repeated preload correction to keep cutting.\n\nThe mechanism was never fully isolated. Bearing grease stiffens substantially near freezing, the preload had been set at summer temperature with little margin, and the formed steel tube varies enough along its length that preload already changes with carriage position. Any of these could dominate, and separating them would have required instrumentation testing the shop had no reason to fund.\n\nWhat all three share is a dependence on preload set by hand. A profiled linear rail sets preload by machined geometry and a specified preload class instead, which removes that dependence regardless of which contributor was largest.",
 
-    approach: "",
+    approach: "Converted the X-axis to HGR20 profile rail with two HGH20CA carriage blocks, and designed a two-part bracket to carry the existing Z-axis assembly and cableway off the new carriage.\n\nThe cantilever moment is reacted as a force couple across the two blocks rather than absorbed by a single block in moment loading, which is the weak direction for a profiled rail block. The available envelope set the block spacing at 78.7 mm centers, leaving 2 mm between block bodies, the minimum achievable for this block size. That is a stiffness compromise, accepted because the applied loads are small.\n\nLoads were measured rather than estimated: 2.58 kg for the Z-axis assembly and 2.27 kg for the cableway, weighed separately because they act at different moment arms. Statics gave a root moment of 1.974 N·m, and beam bending with a stress concentration factor at the fillet gave a peak stress of 3.316 MPa against 6061-T6 yield, for a factor of safety of 83.2. Block capacity was never a constraint; the couple force is roughly 24.74 N per block against a 27.76 kN static rating.\n\nThe assembly was FDM printed in PETG with heat-set threaded inserts and fit-checked on the machine before release for machining. The printed article was then left in service and ran production for roughly two months, validating the geometry, load path, and rail mounting under real cutting loads before committing to billet.\n\nRail mounting holes were drilled fresh rather than reusing the OEM pattern. A 3D printed jig positioned and held the rail across the full gantry length, and the rail's own mounting holes were then used as the drill template, center punched, drilled, and tapped in place. Locating from the rail itself removes transfer error from hole position, which mattered because two blocks at 78.7 mm centers are rigidly linked and cannot accommodate a rail that wanders across the span.\n\nThe carriage bracket was machined from solid 5 in stock with an integral gusset rather than fabricated, which avoids weld distortion at the interface mounting to the blocks.",
 
-    result: "",
+    result: "The PETG prototype ran production for roughly two months before visible deflection appeared at the PD-PC1 to PD-PC2 joint, where the 0.25 in section could not hold the cantilever moment under sustained load at shop temperature. Cut quality never degraded visually. It was replaced on the expectation that creep would continue through a Florida summer rather than on any observed loss of performance.\n\nThe machined 6061-T6 parts were installed in May 2026 using the same geometry, and the machine has run in production since with no preload correction, replacing a carriage that had needed adjustment on a recurring basis.\n\nCut quality has held through a Florida summer with no observed change. The cold weather behavior that prompted the conversion cannot be verified until winter, and that check is still outstanding.",
 
     lessons: [
       "Released the drawings with dimensional tolerancing only. Applying GD&T would have controlled the relationships that actually matter here: perpendicularity between the carriage and upright mounting faces, and flatness on the block mounting surface. Two carriage blocks at 78.7 mm centers are rigidly linked and can't accommodate an out-of-flat mount.",
-      "",
+      "The PETG prototype showed visible deflection at the PD-PC1 to PD-PC2 joint within the first month, where the 0.25 in section could not hold the cantilever moment under sustained load at shop temperature. Cut quality never degraded visually, and the part was replaced on the expectation that creep would continue through a Florida summer rather than on any observed loss of performance. The same geometry in 6061-T6 has held since. Static load capacity and long-term dimensional stability are different requirements, and a printed article can satisfy the first while failing the second.",
     ],
 
     specs: [
       { k: "Machine", v: "Langmuir CrossFire XR, X-axis" },
       { k: "Linear guide", v: "HGR20 profile rail, 1400 mm" },
-      { k: "Carriage", v: "2 × HGH20CA blocks" },
+      { k: "Carriage", v: "2 × HGH20CA blocks, 78.7 mm center" },
       { k: "Block spacing", v: "2 mm clearance between bodies (minimum achievable)" },
 	  { k: "Rail mounting", v: "Drilled to 60 mm pitch, M5 hardware" },
-      { k: "Bracket", v: "6061-T6, machined from 127 mm block" },
-      { k: "Applied load", v: "22.27 N Z-Axis, 4.02 N cableway (measured)" },
+	  { k: "Carriage bracket", v: "6061-T6, machined from solid, PD-PC1" },
+	  { k: "Upright", v: "6061-T6, 0.25 in plate, PD-PC2" },
+      { k: "Applied load", v: "25.31 N Z-Axis, 22.27 N cableway assembly (measured)" },
       { k: "Root moment", v: "1.974 N·m" },
       { k: "Peak stress", v: "1.66 MPa bending, vertical leg" },
       { k: "Analysis", v: "Hand calculation, statics and beam bending" },
