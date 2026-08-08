@@ -45,7 +45,8 @@ img{max-width:100%;display:block}
 /* ---------- nav ---------- */
 header{
   position:sticky;top:0;z-index:50;
-  background:rgba(11,13,16,.72);backdrop-filter:blur(14px);
+  background:rgba(11,13,16,.82);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
 nav{display:flex;align-items:center;justify-content:space-between;height:64px}
@@ -115,7 +116,7 @@ section{padding:76px 0;scroll-margin-top:80px}
 /* whole-card click target, sits under the real links */
 .proj .cardlink{position:absolute;inset:0;z-index:1}
 .proj .pbody > *{position:relative}
-.thumb{aspect-ratio:16/9;background:var(--bg-2);border-bottom:1px solid var(--line);
+.thumb{aspect-ratio:16/9;min-height:1px;background:var(--bg-2);border-bottom:1px solid var(--line);
   position:relative;overflow:hidden}
 .thumb img{width:100%;height:100%;object-fit:cover}
 .thumb .gen{width:100%;height:100%;display:grid;place-items:center;font-family:var(--mono);
@@ -291,3 +292,10 @@ footer{border-top:1px solid var(--line);padding:26px 0;font-family:var(--mono);
 .det.bullets{list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:2px}
 .det.bullets li{position:relative;padding-left:16px;line-height:1.55}
 .det.bullets li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-size:10px;top:3px}
+
+/* files: 'request access' rows — nothing is published, it opens an email */
+.files .req .arr{color:var(--warn);font-family:var(--mono);font-size:11.5px;
+  border:1px dashed rgba(210,153,34,.4);background:rgba(210,153,34,.08);
+  border-radius:5px;padding:2px 7px;white-space:nowrap}
+.files .req:hover{color:var(--warn)}
+.files .req:hover .arr{background:rgba(210,153,34,.16);border-style:solid}

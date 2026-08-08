@@ -338,13 +338,36 @@
         + p.specs.filter(s => s && s.k).map(s =>
             '<div class="kv"><span>'+esc(s.k)+'</span><span>'+markFill(esc(s.v))+'</span></div>').join("")
         + '</div>';
+    // A file row is one of three things:
+    //   url          -> a real download
+    //   request:true -> a prefilled email asking you for it (nothing published)
+    //   neither      -> greyed out, marked "soon"
+    const fileRow = f => {
+      if (f.request) {
+        const subject = "Access request — " + p.title + ": " + f.label;
+        const body =
+          "Hi Drake,\n\n" +
+          "I'd like to request access to:\n" +
+          "  " + f.label + "\n" +
+          "  Project: " + p.title + "\n\n" +
+          "A little about me and what I'm evaluating it for:\n\n\n" +
+          "Thanks,\n";
+        const href = "mailto:" + SITE.email
+          + "?subject=" + encodeURIComponent(subject)
+          + "&body=" + encodeURIComponent(body);
+        return '<a class="req" href="' + esc(href) + '"><span>' + esc(f.label)
+          + '</span><span class="arr">request →</span></a>';
+      }
+      if (f.url) {
+        return '<a href="'+esc(f.url)+'" target="_blank" rel="noopener"><span>'
+          + esc(f.label)+'</span><span class="arr">↓</span></a>';
+      }
+      return '<a class="soon"><span>'+esc(f.label)+'</span><span class="arr">soon</span></a>';
+    };
+
     if (p.files && p.files.length)
       side += '<div class="card"><h4>Files</h4><ul class="files">'
-        + p.files.filter(f => f && f.label).map(f => '<li>' + (f.url
-            ? '<a href="'+esc(f.url)+'" target="_blank" rel="noopener"><span>'
-              + esc(f.label)+'</span><span class="arr">↓</span></a>'
-            : '<a class="soon"><span>'+esc(f.label)
-              +'</span><span class="arr">soon</span></a>') + '</li>').join("")
+        + p.files.filter(f => f && f.label).map(f => '<li>'+fileRow(f)+'</li>').join("")
         + '</ul></div>';
     $("p-side").innerHTML = side;
 
