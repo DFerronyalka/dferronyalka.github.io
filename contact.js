@@ -10,7 +10,7 @@ const CONTACT = {
 
   /* ---- the Contact section at the bottom of the home page ---- */
   heading: "Let's build something",
-  blurb:   "I'm seeking a Summer 2027 mechanical design or manufacturing internship — 12 consecutive weeks, full-time, onsite, and open to relocation anywhere in the U.S.",
+  blurb:   "I'm seeking a Summer 2027 mechanical design or manufacturing internship — 12 consecutive weeks, full-time, onsite, and open to relocation anywhere in the U.S. Email is the fastest way to reach me.",
 
   /* ---- the "Email me" button ---- */
   emailSubject: "Internship Opportunity",
@@ -26,8 +26,8 @@ const CONTACT = {
   requestBody:
     "Hi Drake,\n\n" +
     "I'd like to request access to:\n" +
-    "  {file}\n" +
     "  Project: {project}\n\n" +
+    "  {file}\n\n" +
     "A little about me and what I'm evaluating it for:\n\n\n" +
     "Thanks,",
 };
