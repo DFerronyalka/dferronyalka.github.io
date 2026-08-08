@@ -76,10 +76,10 @@ const PROJECTS = [
     blurb: "A modular mounting architecture for off-road wheel lighting, engineered for vibration resistance, packaging efficiency, and serviceability — taken from CAD through CNC-fabricated prototype to an issued U.S. patent on which I am a named co-inventor.",
     highlights: [
       "Modular mounting design engineered for vibration resistance and serviceability.",
-      "Manufacturing-ready drawings and BOM developed in SolidWorks with full GD&T.",
-      "Prototype fabricated via Laser-cut flat patterns and secondary operations, validated through torque checks and road testing.",
+      "Manufacturing-ready drawings and BOM developed in SolidWorks.",
+      "Prototype fabricated via laser-cut flat patterns and secondary operations, validated through torque checks and road testing.",
     ],
-    tags: ["Mechanical Design", "SolidWorks", "GD&T", "CNC Fabrication"],
+    tags: ["Mechanical Design", "SolidWorks", "GD&T"],
     image: "images/Wheel_Light_Fitment_Thumbnail.jpg",
     links: {
       github: "",
@@ -179,6 +179,64 @@ const PROJECTS = [
     ],
   },
 
+{
+    draft: false,
+    id: "linear-rail-conversion",
+    title: "X-Axis Linear Rail Conversion — CNC Plasma Table",
+    year: "2026",
+    category: "Mechanical",
+    status: "In Service",
+    blurb: "Converted the X-axis of a Langmuir CrossFire XR plasma table from a hand-preloaded ball-bearing carriage to 20 mm profiled linear rail, with a machined aluminum cantilever bracket sized by hand calculation from measured Z-axis and cableway loads — designed and installed for AFNY Specialties through Pulsar Designs.",
+    highlights: [
+      "Reacted the cantilever moment as a force couple across two HGH20CA blocks at 78.7 mm centers — the minimum achievable spacing, with 2 mm clearance between block bodies.",
+      "In continuous production service since May 2026 with no re-adjustment required — replacing a carriage that needed preload correction on a recurring basis.",
+    ],
+    tags: ["Mechanical Design", "CNC Plasma", "SolidWorks", "Linear Rail Systems"],
+    image: "images/linear-rail-card.jpg",
+    links: {
+      github: "",
+      writeup: "",
+      demo: "",
+    },
+
+    /* ---- detail page ---- */
+    gallery: [
+      { src: "", caption: "" },
+      { src: "", caption: "" },
+      { src: "", caption: "" },
+    ],
+
+    problem: "",
+
+    approach: "",
+
+    result: "",
+
+    lessons: [
+      "Released the drawings with dimensional tolerancing only. Applying GD&T would have controlled the relationships that actually matter here: perpendicularity between the carriage and upright mounting faces, and flatness on the block mounting surface. Two carriage blocks at 78.7 mm centers are rigidly linked and can't accommodate an out-of-flat mount.",
+      "",
+    ],
+
+    specs: [
+      { k: "Machine", v: "Langmuir CrossFire XR, X-axis" },
+      { k: "Linear guide", v: "HGR20 profile rail, 1400 mm" },
+      { k: "Carriage", v: "2 × HGH20CA blocks" },
+      { k: "Block spacing", v: "2 mm clearance between bodies (minimum achievable)" },
+	  { k: "Rail mounting", v: "Drilled to 60 mm pitch, M5 hardware" },
+      { k: "Bracket", v: "6061-T6, machined from 127 mm block" },
+      { k: "Applied load", v: "22.27 N Z-Axis, 4.02 N cableway (measured)" },
+      { k: "Root moment", v: "1.974 N·m" },
+      { k: "Peak stress", v: "1.66 MPa bending, vertical leg" },
+      { k: "Analysis", v: "Hand calculation, statics and beam bending" },
+      { k: "Installed", v: "May 2026" },
+      { k: "Status", v: "In production service" },
+    ],
+
+    files: [
+      { label: "Sizing calculations (PDF)",     url: "" },
+      { label: "Drawing set (Rev 3)", request: true},
+    ],
+  },
 ];
 
 /* ------------------------------------------------------------------
@@ -213,6 +271,13 @@ const TIMELINE = [
             {k: "GPA:", v: "3.85 / 4.00"},
             ],
     detail: "Relevant coursework: Differential Equations, Physics II with lab, Statics, Solid Mechanics, Dynamics, Thermodynamics, Programming with Python and C.",
+  },
+  {
+    period: "2025 — Present",
+    title: "Founder / Mechanical Design",
+    org: "Pulsar Designs LLC",
+    facts: [],
+    detail: "Independent mechanical design and fabrication services. Retained by AFNY Specialties following full-time employment for CNC equipment upgrades and design work.",
   },
   {
     period: "2024 — 2025",
