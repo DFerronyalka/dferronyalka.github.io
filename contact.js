@@ -26,8 +26,7 @@ const CONTACT = {
   requestBody:
     "Hi Drake,\n\n" +
     "I'd like to request access to:\n" +
-    "  Project: {project}\n\n" +
-    "  {file}\n\n" +
+    "{project}    {file}\n\n" +
     "A little about me and what I'm evaluating it for:\n\n\n" +
     "Thanks,",
 };
