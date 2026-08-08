@@ -42,10 +42,17 @@
   const home = () => /\/projects\/[^\/]+\/?$/.test(location.pathname)
     ? "../../index.html" : "index.html";
 
+  // Contact wording lives in contact.js. Missing file or missing field
+  // falls back to data.js, then to a sensible default.
+  const C = (k, dflt) => {
+    if (typeof CONTACT !== "undefined" && CONTACT && CONTACT[k]) return CONTACT[k];
+    if (SITE && SITE[k]) return SITE[k];
+    return dflt;
+  };
+
   // One-tap email: prefilled subject so a reply lands in the right thread.
-  // Override the subject by adding  emailSubject: "..."  to SITE in data.js.
   const mailto = () => "mailto:" + SITE.email + "?subject="
-    + encodeURIComponent(SITE.emailSubject || "Internship Opportunity");
+    + encodeURIComponent(C("emailSubject", "Internship Opportunity"));
 
   const LINK_LABELS = { github:"Code", writeup:"Write-up", demo:"Demo",
                         video:"Video", cad:"CAD files", paper:"Paper" };
@@ -143,6 +150,10 @@
     if (SITE.github)    cta += '<a class="btn" href="'+esc(SITE.github)+'" target="_blank" rel="noopener">GitHub ↗</a>';
     if (SITE.linkedin)  cta += '<a class="btn" href="'+esc(SITE.linkedin)+'" target="_blank" rel="noopener">LinkedIn ↗</a>';
     $("h-cta").innerHTML = cta;
+
+    const ch = $("c-head"), cb = $("c-blurb");
+    if (ch && C("heading", "")) ch.textContent = C("heading", "");
+    if (cb && C("blurb", ""))   cb.textContent = C("blurb", "");
 
     $("c-cta").innerHTML =
       (SITE.email ? '<a class="btn primary" href="'+esc(mailto())+'">Email me</a>' : "")
@@ -344,14 +355,28 @@
     //   neither      -> greyed out, marked "soon"
     const fileRow = f => {
       if (f.request) {
-        const subject = "Access request — " + p.title + ": " + f.label;
-        const body =
-          "Hi Drake,\n\n" +
-          "I'd like to request access to:\n" +
-          "  " + f.label + "\n" +
-          "  Project: " + p.title + "\n\n" +
-          "A little about me and what I'm evaluating it for:\n\n\n" +
-          "Thanks,\n";
+        // Wording comes from SITE.requestSubject / SITE.requestBody in
+        // data.js if set. {file}, {project} and {me} are filled in.
+        const fill = t => String(t)
+          .replace(/\{file\}/g, f.label)
+          .replace(/\{project\}/g, p.title)
+          .replace(/\{me\}/g, SITE.name);
+
+        const subject = fill(C("requestSubject",
+          "Access request — {project}: {file}"));
+        const body = fill(C("requestBody", [
+          "Hi " + String(SITE.name).split(" ")[0] + ",",
+          "",
+          "I'd like to request access to:",
+          "  {file}",
+          "  Project: {project}",
+          "",
+          "A little about me and what I'm evaluating it for:",
+          "",
+          "",
+          "Thanks,",
+        ].join("\n")));
+
         const href = "mailto:" + SITE.email
           + "?subject=" + encodeURIComponent(subject)
           + "&body=" + encodeURIComponent(body);

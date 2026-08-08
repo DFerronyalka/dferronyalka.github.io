@@ -43,6 +43,9 @@ function copyInto(from, to) {
 /* ---------- render one page ---------- */
 const dataJs = fs.readFileSync(path.join(SRC, "data.js"), "utf8");
 const siteJs = fs.readFileSync(path.join(SRC, "site.js"), "utf8");
+// contact.js is optional — the site falls back to defaults without it.
+const contactJs = fs.existsSync(path.join(SRC, "contact.js"))
+  ? fs.readFileSync(path.join(SRC, "contact.js"), "utf8") : "";
 
 async function render(templateFile, url) {
   const html = fs.readFileSync(path.join(SRC, templateFile), "utf8");
@@ -60,7 +63,7 @@ async function render(templateFile, url) {
   // saved output — the tag itself is still in the HTML for real visitors.
   // Both files must run in ONE eval: data.js uses `const`, which would
   // otherwise be scoped to its own eval and invisible to site.js.
-  w.eval(dataJs + "\n;\n" + siteJs);
+  w.eval(dataJs + "\n;\n" + contactJs + "\n;\n" + siteJs);
 
   if (!w.document.getElementById("brand").textContent.trim()) {
     throw new Error("Nothing rendered for " + templateFile + " — check data.js");
