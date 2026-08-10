@@ -46,6 +46,9 @@ const siteJs = fs.readFileSync(path.join(SRC, "site.js"), "utf8");
 // contact.js is optional — the site falls back to defaults without it.
 const contactJs = fs.existsSync(path.join(SRC, "contact.js"))
   ? fs.readFileSync(path.join(SRC, "contact.js"), "utf8") : "";
+// components.js is optional too.
+const componentsJs = fs.existsSync(path.join(SRC, "components.js"))
+  ? fs.readFileSync(path.join(SRC, "components.js"), "utf8") : "";
 
 async function render(templateFile, url) {
   const html = fs.readFileSync(path.join(SRC, templateFile), "utf8");
@@ -63,7 +66,7 @@ async function render(templateFile, url) {
   // saved output — the tag itself is still in the HTML for real visitors.
   // Both files must run in ONE eval: data.js uses `const`, which would
   // otherwise be scoped to its own eval and invisible to site.js.
-  w.eval(dataJs + "\n;\n" + contactJs + "\n;\n" + siteJs);
+  w.eval([dataJs, contactJs, componentsJs, siteJs].join("\n;\n"));
 
   if (!w.document.getElementById("brand").textContent.trim()) {
     throw new Error("Nothing rendered for " + templateFile + " — check data.js");
@@ -129,9 +132,21 @@ for (const p of list) {
   console.log("built  /projects/" + id + "/");
 }
 
+/* the component collection page, if components.js is present */
+const extraUrls = [];
+if (componentsJs && fs.existsSync(path.join(SRC, "components.html"))) {
+  // ?all=1 so the saved HTML contains every component for crawlers;
+  // the browser re-applies the grid cap on load.
+  const { html } = await render("components.html", ORIGIN + "/components.html?all=1");
+  fs.writeFileSync(path.join(OUT, "components.html"), html);
+  extraUrls.push("/components.html");
+  pages++;
+  console.log("built  /components.html");
+}
+
 /* a plain sitemap so crawlers find every page */
 fs.writeFileSync(path.join(OUT, "sitemap.txt"),
-  ["/", ...list.map(p => "/projects/" + pid(p) + "/")].join("\n") + "\n");
+  ["/", ...list.map(p => "/projects/" + pid(p) + "/"), ...extraUrls].join("\n") + "\n");
 
 console.log(`\n${pages} pages written to dist/`);
 }

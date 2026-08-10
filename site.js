@@ -54,6 +54,17 @@
   const mailto = () => "mailto:" + SITE.email + "?subject="
     + encodeURIComponent(C("emailSubject", "Internship Opportunity"));
 
+  /* ---------- the component collection (components.js) ---------- */
+  const COLL = () => (typeof BRACKETRY !== "undefined" && BRACKETRY
+    && BRACKETRY.enabled !== false && (BRACKETRY.items||[]).length) ? BRACKETRY : null;
+  const citems = () => (COLL() ? COLL().items : []).filter(i => i && i.name);
+  const collUrl = () => "components.html";
+  // Parts belonging to one program, found by the program's display name.
+  const partsOfProgram = name => citems().filter(i => i.program === name);
+  // The program entry (id + name) a project id maps to, if any.
+  const programForProject = projId => ((COLL() && COLL().programs) || [])
+    .find(g => g.id && g.id === projId) || null;
+
   const LINK_LABELS = { github:"Code", writeup:"Write-up", demo:"Demo",
                         video:"Video", cad:"CAD files", paper:"Paper" };
 
@@ -176,12 +187,15 @@
       .join("");
 
     /* filters */
+    const coll = COLL();
     const cats = ["All", ...new Set(LIVE.map(p => p.category).filter(Boolean))];
+    if (coll && coll.category && cats.indexOf(coll.category) === -1) cats.push(coll.category);
+    const inCat = c => (c === "All" ? 1 : (coll && coll.category === c ? 1 : 0));
     let active = "All";
     $("filters").innerHTML = cats.map(c =>
       '<button class="chip'+(c===active?" on":"")+'" data-cat="'+esc(c)+'">'+esc(c)
       + ' <span style="opacity:.55">'
-      + (c==="All" ? LIVE.length : LIVE.filter(p => p.category===c).length)
+      + ((c==="All" ? LIVE.length : LIVE.filter(p => p.category===c).length) + inCat(c))
       + '</span></button>').join("");
 
     function card(p){
@@ -203,11 +217,39 @@
         + '</div></article>';
     }
 
+    // The collection renders as a card alongside the projects.
+    function collCard(){
+      const c = COLL(); if (!c) return "";
+      const n = citems().length;
+      const cells = citems().slice(0,5)
+        .map(i => '<div class="cell">'+esc(i.ref || initials(i.name))+'</div>').join("")
+        + (n > 5 ? '<div class="cell more">+'+(n-5)+'</div>'
+                 : '<div class="cell"></div>');
+      const hl = (c.highlights||[]).map(h =>
+        '<li>'+esc(String(h).replace(/\{count\}/g, n))+'</li>').join("");
+      return '<article class="proj clickable">'
+        + '<a class="cardlink" href="'+collUrl()+'" aria-label="'+esc(c.title)+'"></a>'
+        + '<span class="countchip">'+n+' COMPONENT'+(n===1?"":"S")+'</span>'
+        + '<div class="thumb mosaic">'+cells+'</div>'
+        + '<div class="pbody">'
+        +   '<div class="ptop">'
+        +     (c.year ? '<span class="yr">'+esc(c.year)+'</span>' : "")
+        +     (c.category ? '<span class="badge">'+esc(c.category)+'</span>' : "")
+        +     (c.status ? '<span class="badge '+statusClass(c.status)+'">'+esc(c.status)+'</span>' : "")
+        +   '</div>'
+        +   '<h3>'+esc(c.title)+'</h3>'
+        +   (c.blurb ? '<p class="blurb">'+esc(c.blurb)+'</p>' : "")
+        +   (hl ? '<ul class="hl">'+hl+'</ul>' : "")
+        +   tagRow(c.tags)
+        +   '<div class="plinks"><a class="more" href="'+collUrl()+'">Browse the log →</a></div>'
+        + '</div></article>';
+    }
+
     function draw(){
       const list = active === "All" ? LIVE : LIVE.filter(p => p.category === active);
-      $("grid").innerHTML = list.length
-        ? list.map(card).join("")
-        : '<p class="empty">No projects in this category yet.</p>';
+      const extra = (active === "All" || (coll && coll.category === active)) ? collCard() : "";
+      const html = list.map(card).join("") + extra;
+      $("grid").innerHTML = html || '<p class="empty">No projects in this category yet.</p>';
     }
     draw();
 
@@ -390,6 +432,22 @@
       return '<a class="soon"><span>'+esc(f.label)+'</span><span class="arr">soon</span></a>';
     };
 
+    // Component cross-reference: only when this project has parts logged.
+    const prog = programForProject(pid(p));
+    const parts = prog ? partsOfProgram(prog.name) : [];
+    if (parts.length) {
+      const refs = parts.slice(0,4).map(x => '<span>'+esc(x.ref||"")+'</span>').join("")
+        + (parts.length > 4 ? '<span>+'+(parts.length-4)+'</span>' : "");
+      side += '<div class="card xcard"><h4>Component detail</h4>'
+        + '<div class="big"><span class="n">'+parts.length+'</span>'
+        + '<span class="u">part'+(parts.length===1?"":"s")+'</span></div>'
+        + '<p>Individual components from this project are documented in the log '
+        + 'with material and process notes.</p>'
+        + (refs ? '<div class="refs">'+refs+'</div>' : "")
+        + '<a class="go" href="'+collUrl()+'?program='+encodeURIComponent(prog.name)+'">'
+        + 'View in '+esc(COLL().title)+' →</a></div>';
+    }
+
     if (p.files && p.files.length)
       side += '<div class="card"><h4>Files</h4><ul class="files">'
         + p.files.filter(f => f && f.label).map(f => '<li>'+fileRow(f)+'</li>').join("")
@@ -409,6 +467,119 @@
       cell(prev, "← Newer project", "prev") + cell(next, "Older project →", "next");
   }
 
+  /* ==================================================================
+     COLLECTION PAGE (components.html)
+     ================================================================== */
+  function renderCollection(){
+    const c = COLL();
+    if (!c) {
+      $("coll-root").innerHTML = '<div class="wrap"><div class="nf">'
+        + '<h1>Nothing here yet</h1><p>No components have been added.</p>'
+        + '<a class="btn primary" href="index.html#projects">See all projects</a></div></div>';
+      return;
+    }
+    const all = citems();
+    document.title = c.title + " — " + SITE.name;
+
+    /* hero */
+    $("coll-hero").innerHTML =
+      '<a class="back" href="index.html#projects">← All projects</a>'
+      + '<div class="ptop">'
+      +   (c.year ? '<span class="yr">'+esc(c.year)+'</span>' : "")
+      +   (c.category ? '<span class="badge">'+esc(c.category)+'</span>' : "")
+      +   (c.status ? '<span class="badge '+statusClass(c.status)+'">'+esc(c.status)+'</span>' : "")
+      + '</div>'
+      + '<h1>'+esc(c.title)+'</h1>'
+      + (c.blurb  ? '<p class="lede">'+esc(c.blurb)+'</p>' : "")
+      + (c.intro  ? '<p class="lede" style="margin-top:12px">'+esc(c.intro)+'</p>' : "")
+      + tagRow(c.tags);
+
+    /* stats — all derived */
+    const usedProc = (c.processes||[]).filter(g => all.some(i => i.group === g));
+    const usedProg = [...new Set(all.map(i => i.program).filter(Boolean))];
+    const stat = (n,l) => '<div class="s"><div class="n">'+n+'</div><div class="l">'+esc(l)+'</div></div>';
+    $("coll-stats").innerHTML = '<div class="coll-stats">'
+      + stat(all.length, "Components released")
+      + stat(usedProg.length, "Programs")
+      + stat(usedProc.length, "Processes")
+      + '</div>';
+
+    /* filters — process and program, both derived */
+    const params = new URLSearchParams(location.search);
+    let fProc = "All";
+    let fProg = params.get("program") || "All";
+    const showAll = params.get("all") === "1";
+
+    const chipRow = (label, opts, current, key) =>
+      '<p class="filterlabel">'+esc(label)+'</p><div class="filters" data-key="'+key+'">'
+      + ['All', ...opts].map(o =>
+          '<button class="chip'+(o===current?" on":"")+'" data-v="'+esc(o)+'">'+esc(o)
+          + ' <span style="opacity:.55">'
+          + (o==="All" ? all.length
+              : all.filter(i => (key==="proc" ? i.group : i.program) === o).length)
+          + '</span></button>').join("")
+      + '</div>';
+
+    function drawFilters(){
+      $("coll-filters").innerHTML =
+        chipRow("Filter by process", usedProc, fProc, "proc")
+        + (usedProg.length > 1 ? chipRow("Filter by program", usedProg, fProg, "prog") : "");
+    }
+
+    /* tiles */
+    const programLink = name => {
+      const g = ((c.programs)||[]).find(x => x.name === name);
+      if (!g) return esc(name);
+      return g.id
+        ? '<a href="project.html?id='+encodeURIComponent(g.id)+'">'+esc(name)+'</a>'
+        : esc(name);
+    };
+    const tile = i =>
+      '<article class="item">'
+      + '<div class="shot">'
+      +   (i.ref ? '<span class="ref">'+esc(i.ref)+'</span>' : "")
+      +   (i.group ? '<span class="proc">'+esc(i.group)+'</span>' : "")
+      +   (i.image
+            ? '<img src="'+esc(i.image)+'" alt="'+esc(i.name)+'" loading="lazy">'
+            : '<div class="ph">IMAGE<br>PENDING</div>')
+      + '</div>'
+      + '<div class="b">'
+      +   '<h3>'+esc(i.name)+'</h3>'
+      +   '<div class="spec">' + (i.material ? '<b>'+esc(i.material)+'</b>' : "")
+      +     (i.material && i.process ? " · " : "") + (i.process ? esc(i.process) : "") + '</div>'
+      +   (i.note ? '<p class="note">'+markFill(esc(i.note))+'</p>' : "")
+      +   (i.program ? '<div class="prog">Program · '+programLink(i.program)+'</div>' : "")
+      + '</div></article>';
+
+    function drawGrid(){
+      let list = all;
+      if (fProc !== "All") list = list.filter(i => i.group === fProc);
+      if (fProg !== "All") list = list.filter(i => i.program === fProg);
+
+      const cap = (!showAll && c.gridCap > 0) ? c.gridCap : 0;
+      const shown = cap ? list.slice(0, cap) : list;
+
+      $("coll-grid").innerHTML = shown.length
+        ? shown.map(tile).join("")
+        : '<p class="empty">No components match that filter yet.</p>';
+
+      const hidden = list.length - shown.length;
+      $("coll-more").innerHTML = hidden > 0
+        ? '<a class="showall" href="?all=1">Show all '+list.length+' components</a>'
+        : "";
+    }
+
+    $("coll-filters").addEventListener("click", e => {
+      const b = e.target.closest(".chip"); if (!b) return;
+      const key = b.parentNode.dataset.key;
+      if (key === "proc") fProc = b.dataset.v; else fProg = b.dataset.v;
+      drawFilters(); drawGrid();
+    });
+
+    drawFilters();
+    drawGrid();
+  }
+
   /* ---------- boot ---------- */
   function start(){
     if (typeof SITE === "undefined" || typeof PROJECTS === "undefined") {
@@ -420,8 +591,9 @@
       return;
     }
     chrome();
-    if ($("grid"))   renderHome();
-    if ($("p-root")) renderProject();
+    if ($("grid"))      renderHome();
+    if ($("p-root"))    renderProject();
+    if ($("coll-root")) renderCollection();
     reveal();
   }
 
