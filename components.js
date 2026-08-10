@@ -28,7 +28,7 @@ const BRACKETRY = {
      Set enabled: false to hide the whole thing from the site without
      deleting anything.                                              */
 
-  enabled: true,
+  enabled: false,
 
   id:       "bracketry",              // the page address: components.html
   title:    "Bracketry & Mechanisms",
