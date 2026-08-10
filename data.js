@@ -234,7 +234,7 @@ const PROJECTS = [
     ],
 
     files: [
-      { label: "Sizing calculations (PDF)",     url: "" },
+      { label: "Sizing calculations (PDF)",     url: "docs/X-Axis_Linear_Rail_Conversion_Summary.pdf" },
       { label: "Drawing set (Rev 3)", request: true},
     ],
   },
