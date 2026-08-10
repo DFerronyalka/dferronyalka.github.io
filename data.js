@@ -201,9 +201,10 @@ const PROJECTS = [
 
     /* ---- detail page ---- */
     gallery: [
-      { src: "", caption: "" },
-      { src: "", caption: "" },
-      { src: "", caption: "" },
+      { src: "images/langmuir-replacement.jpg", caption: "Original OEM X-axis carriage plate. Bearing preload is set by rotating eccentric shoulder bolts by feel and locking them with flange nuts, so there is no repeatable reference and no way to return to a known setting. This is the adjustment that drove the conversion." },
+      { src: "images/Linear-rail-cad.jpg", caption: "Assembly model showing PD-PC1 and PD-PC2 on two HGH20CA carriage blocks at 78.7 mm centers. The cantilever moment is reacted as a force couple across the two blocks rather than absorbed by a single block in moment loading. The 2 mm clearance between block bodies is the minimum achievable for this block size." },
+      { src: "images/linear-rail-petg.jpg", caption: "FDM printed prototype in PETG with heat set threaded inserts, fit checked and then left in service. It ran production for roughly two months before visible deflection appeared at the PD-PC1 to PD-PC2 joint, where the 0.25 in section could not hold the cantilever moment under sustained load at shop temperature." },
+	  { src: "images/linear-rail-assembly.jpg", caption: "Machined 6061-T6 assembly installed May 2026. Same geometry as the prototype. The machine has run in production since with no preload correction." },
     ],
 
     problem: "The X-axis on AFNY's Langmuir CrossFire XR rides on a hand-preloaded ball bearing carriage. Preload is set by rotating eccentric adjusters by feel and locking them with flange nuts, so there is no repeatable reference and no way to return to a known setting.\n\nOperating the machine through a Florida year, motion was smooth and consistent at shop temperatures around 85 F. As temperatures dropped near 30 F in winter, the X-axis became sticky and sporadic, and the carriage required repeated preload correction to keep cutting.\n\nThe mechanism was never fully isolated. Bearing grease stiffens substantially near freezing, the preload had been set at summer temperature with little margin, and the formed steel tube varies enough along its length that preload already changes with carriage position. Any of these could dominate, and separating them would have required instrumentation testing the shop had no reason to fund.\n\nWhat all three share is a dependence on preload set by hand. A profiled linear rail sets preload by machined geometry and a specified preload class instead, which removes that dependence regardless of which contributor was largest.",
