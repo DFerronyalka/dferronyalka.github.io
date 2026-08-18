@@ -31,7 +31,7 @@ const SITE = {
   // Leave any of these as "" to hide the button.
   github:    "https://github.com/DFerronyalka",
   linkedin:  "https://www.linkedin.com/in/drakeferronyalka/",
-  resumeUrl: "resume.pdf",
+  resumeUrl: "Resume_Drake_Ferronyalka_18Aug26.pdf",
   about: [
     "Veteran-engineer building toward flight hardware and lunar ISRU systems, currently a Mechanical Engineering student at UCF and Machinist Apprentice in its Office of Research shop.",
     "Six years as a U.S. Navy Fire Controlman gave me a first-principles, precision-driven approach to hardware.",
