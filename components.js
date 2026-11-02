@@ -131,14 +131,14 @@ const BRACKETRY = {
     },
 
     {
-      ref: "WD-003",
-      name: "PLACEHOLDER — Swing Arm Weldment",
+      ref: "PD-OJB-001",
+      name: "Bronco Swing-Out Tire Carrier",
       material: "1.75 in x 0.120 DOM",
-      process: "TIG, fixtured",
+      process: "MIG, Tubing Bender, CNC Plasma",
       group: "Weldment",
       program: "Swing-Out Tire Carrier",
-      image: "",
-      note: "<FILL IN: one sentence — function, constraint, number>",
+      image: "Tailgate_Swing.png",
+      note: "One-off tire carrier design to maintain constant loading of ~250 lbs from cantilever support.",
     },
 
     {
