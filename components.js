@@ -137,7 +137,7 @@ const BRACKETRY = {
       process: "MIG, Tubing Bender, CNC Plasma",
       group: "Weldment",
       program: "Swing-Out Tire Carrier",
-      image: "Tailgate_Swing.png",
+      image: "images/Tailgate_Swing.png",
       note: "One-off tire carrier design to maintain constant loading of ~250 lbs from cantilever support.",
     },
 
