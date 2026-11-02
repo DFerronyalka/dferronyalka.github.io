@@ -80,11 +80,7 @@ const BRACKETRY = {
      isn't listed here still appear; they just show no program line.   */
 
   programs: [
-    { id: "dta-1-drivetrain",    name: "DTA-1 Drivetrain" },
-    { id: "wheel-light-mounting", name: "Wheel Light System" },
-    { id: "",                    name: "Tube Chassis" },
     { id: "",                    name: "Swing-Out Tire Carrier" },
-    { id: "",                    name: "Shop & Tooling" },
   ],
 
 
@@ -109,28 +105,6 @@ const BRACKETRY = {
   items: [
 
     {
-      ref: "SM-014",
-      name: "PLACEHOLDER — Shock Tower Gusset",
-      material: "0.190 in HRPO",
-      process: "Laser + press brake",
-      group: "Sheet metal",
-      program: "Tube Chassis",
-      image: "",
-      note: "<FILL IN: what it does, the constraint it solved, and one number — e.g. reacts 4,200 lbf bump load into two frame tubes; bend relief set to clear existing weld beads>",
-    },
-
-    {
-      ref: "MC-006",
-      name: "PLACEHOLDER — Pivot Spindle Housing",
-      material: "6061-T6 billet",
-      process: "3-axis mill",
-      group: "Machined",
-      program: "Swing-Out Tire Carrier",
-      image: "",
-      note: "<FILL IN: one sentence — function, constraint, number>",
-    },
-
-    {
       ref: "PD-OJB-001",
       name: "Bronco Swing-Out Tire Carrier",
       material: "1.75 in x 0.120 DOM",
@@ -139,39 +113,6 @@ const BRACKETRY = {
       program: "Swing-Out Tire Carrier",
       image: "images/Tailgate_Swing.png",
       note: "One-off tire carrier design to maintain constant loading of ~250 lbs from cantilever support.",
-    },
-
-    {
-      ref: "PR-002",
-      name: "PLACEHOLDER — Bearing Press Guide",
-      material: "PETG, FDM",
-      process: "3D printed",
-      group: "Printed tooling",
-      program: "Shop & Tooling",
-      image: "",
-      note: "<FILL IN: one sentence — function, constraint, number>",
-    },
-
-    {
-      ref: "SM-009",
-      name: "PLACEHOLDER — Light Pod Bracket",
-      material: "0.135 in A36",
-      process: "Plasma + brake",
-      group: "Sheet metal",
-      program: "Wheel Light System",
-      image: "",
-      note: "<FILL IN: one sentence — function, constraint, number>",
-    },
-
-    {
-      ref: "SM-002",
-      name: "PLACEHOLDER — Sensor Standoff, Offset",
-      material: "0.080 in 6061-T6",
-      process: "Laser + brake",
-      group: "Sheet metal",
-      program: "DTA-1 Drivetrain",
-      image: "",
-      note: "<FILL IN: one sentence — function, constraint, number>",
     },
 
   ],
